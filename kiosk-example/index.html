@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiosk</title>
+  <!-- <link rel="icon" type="image/png" href="assets/logo.png"> -->
+  <link rel="stylesheet" href="assets/style.css"></link>
+  <script src="src/main.js" defer></script>
+  <!-- <script src="src/alpine.js" defer></script> -->
+  <script src="https://unpkg.com/alpinejs" defer></script>
+</head>
+<body
+  x-cloak
+  x-data="{ page, services, language, languages } = $store.model"
+>
+  <div class="home-screen" x-show="page === 'home'">
+    <h1>Webex Bank</h1>
+
+    <h2 @click="page = 'service'" class="touch-to-start">Touch to start</h2>
+
+    <div class="languages">
+      <template x-for="current in languages">
+        <div
+          class="language"
+          x-text="current"
+          @click="language = current"
+          :class="language === current && 'selected'"
+        ></div>
+      </template>
+    </div>
+  </div>
+
+  <div class="service" x-show="page === 'service'">
+    <h2>Choose Your Service</h2>
+    <div class="row">
+      <template x-for="service in services">
+        <a class="service" x-bind:href="'sip:'+ service.url" :class="service.name">
+          <div class="avatar"></div>
+          <label x-text="service.name"></label>
+        </a>
+      </template>
+    </div>
+    <button @click="page = 'home'" class="back">Back</button>
+  </div>
+</body>
+
+</html>

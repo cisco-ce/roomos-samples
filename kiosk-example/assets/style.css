@@ -1,0 +1,113 @@
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+@font-face {
+  font-family: 'CiscoSansThin';
+  src: url('./CiscoSansThin.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  padding: 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: CiscoSansThin, arial;
+  background-image: url('./images/ciscologo.png');
+  background-position: 5% 5%;
+  background-repeat: no-repeat;
+  background-size: 120px auto;
+  background-color: #007481;
+  color: white;
+  font-size: 36px;
+}
+
+a, button {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  text-decoration: none;
+}
+
+a:hover, button:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 100px;
+}
+
+h2 {
+  font-size: 50px;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.touch-to-start {
+  animation: pulse 1.6s linear infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1) }
+  50% { transform: scale(1.07) }
+  100% { transform: scale(1) }
+}
+
+.languages {
+  display: none;
+  position: absolute;
+  bottom: 5vw;
+  right: 5vw;
+}
+
+.language.selected {
+  font-weight: bold;
+}
+
+.row {
+  display: flex;
+}
+
+.service {
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+}
+
+.avatar {
+  border: 1px solid white;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  margin: 1em 0;
+  background-position: center center;
+  background-size: cover;
+}
+
+.Loan .avatar { background-image: url('./images/avatar1.png'); }
+.Advice .avatar { background-image: url('./images/avatar2.jpg'); }
+.Credit .avatar { background-image: url('./images/ahauge.png'); }
+
+.back {
+  position: absolute;
+  bottom: 1.5em;
+  left: 3em;
+}
