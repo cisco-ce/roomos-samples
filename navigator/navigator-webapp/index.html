@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8">
+    <title>Persistent Webapp Mode Test App</title>
+  </head>
+  <style>
+	body {
+		background-color: lightgray;
+		width: 100vw;
+	}
+	 button {
+		padding: 35px 50px;
+		margin: 20px;
+		font-size: 30px;
+		text-align: center;
+		cursor: pointer;
+		outline: none;
+		border: none;
+		border-radius: 15px;
+		box-shadow: 0 9px #999;
+	}
+	button:active {
+		background-color: #3e8e41;
+		box-shadow: 0 5px #666;
+		transform: translateY(4px);
+	}
+	.container { 
+		height: 400px;
+		position: relative;
+
+	}
+	.center {
+		margin: 0;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-ms-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+	}
+	.ledStrip { 
+		position: absolute; 
+		bottom: 10px; 
+		width: 100%;
+	}
+  </style>
+  <body>
+	<div id ="content">Waiting on initialization...</div>
+	<div id ="xapistatus">Waiting on initialization...</div>
+    <h1 style="text-align:center;margin-top: 50px;">Testing with Webview XAPI</h1>
+	<div class="container">
+		<div class="center">
+			<h2 style="text-align:center;">Set LED color using jsxapi:</h2>
+			<button id="greenButton" style="background-color:green;">Green</button>   
+			<button id="yellowButton" style="background-color:yellow;">Yellow</button>   
+			<button id="redButton" style="background-color:red;">Red</button>
+			<button id="manualButton" style="background-color:orange;">Manual</button>
+			<button id="autoButton" style="background-color:orange;">Auto</button>
+			<button id="failCase" style="background-color:orange;">Book</button>
+		</div>
+	</div>
+	
+	<div class="ledStrip">
+		<svg width="100%" height="80">
+			<rect id="ledRect" width="100%" height="100" style="stroke-width:3;stroke:rgb(0,0,0)" />
+		</svg>
+	</div>
+  </body>
+  <script src="client.js"></script>
+		<script type="text/javascript"></script>
+</html>
