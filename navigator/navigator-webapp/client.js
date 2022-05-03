@@ -7,6 +7,7 @@ async function init() {
 		xapistatus.textContent = "jsxapi available";
 		unique_id = createPersistentCookie();
 		content.textContent = "Navigator ID: " + unique_id;
+		setupSubscriptions();
 	} catch(e) {
 		content.textContent = e.message;
 		xapistatus.textContent = "error getting jsxapi object";
@@ -48,7 +49,6 @@ greenButton.addEventListener('click', async function(e) {
 	try {		
 		//Example of an xapi xCommand
 		xapi.Command.UserInterface.LedControl.Color.Set({ Color: 'Green' });
-		getCurrent();
 	} catch(e) {
 		content.textContent = e.message;
 	}
@@ -60,7 +60,6 @@ yellowButton.addEventListener('click', async function(e) {
 	try {
 	   	//Example of an xapi xCommand
 		xapi.Command.UserInterface.LedControl.Color.Set({ Color: 'Yellow' });
-		getCurrent();
   	} catch(e) {
 		content.textContent = e.message;
    	}
@@ -72,7 +71,6 @@ redButton.addEventListener('click', async function(e) {
    try {
 	   //Example of an xapi xCommand
 		xapi.Command.UserInterface.LedControl.Color.Set({ Color: 'Red' });
-		getCurrent();
    	} catch(e) {
 		content.textContent = e.message;
    	}
@@ -95,7 +93,6 @@ autoButton.addEventListener('click', async function(e) {
    try {
 		xapi.Config.UserInterface.LedControl.Mode.set('Auto');
 		content.textContent = `Set Led Control to Auto`;
-		getCurrent();	
 
    	} catch(e) {
 		content.textContent = e.message;
@@ -115,26 +112,11 @@ failButton.addEventListener('click', async function(e) {
    
 });
 
+
 //Gets the current xStatus of LedControl Color and displays on the page.
-function getCurrent() {
+function setupSubscriptions() {
 	//Example xapi xStatus
-	xapi.Status.UserInterface.LedControl.Color.get().then((color) => {
-		switch(color) {
-			case 'Green':
-				 document.getElementById('ledRect').style.fill = 'green';
-				 break;
-			case 'Yellow':
-				 document.getElementById('ledRect').style.fill = 'yellow';
-				 break;
-			case 'Red':
-				 document.getElementById('ledRect').style.fill = 'red';
-				 break;
-			default: 
-				console.log("Unexpected color")
-				document.getElementById('ledRect').style.fill = 'orange';
-		}
-    })
-    .catch(function(error) {
-		console.log(error);
-    });
+	content.textContent = "Setting up subscriptions";
+	xapi.Status.UserInterface.LedControl.Color.on(v =>content.textContent = v);
+	xapi.Status.UserInterface.LedControl.Color.on(v =>document.getElementById('ledRect').style.fill = v);
 }
