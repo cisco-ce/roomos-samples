@@ -7,6 +7,8 @@ async function init() {
 		xapistatus.textContent = "jsxapi available";
 		unique_id = createPersistentCookie();
 		content.textContent = "Navigator ID: " + unique_id;
+		setupSubscriptions();
+		getCurrent();
 	} catch(e) {
 		content.textContent = e.message;
 		xapistatus.textContent = "error getting jsxapi object";
@@ -48,7 +50,6 @@ greenButton.addEventListener('click', async function(e) {
 	try {		
 		//Example of an xapi xCommand
 		xapi.Command.UserInterface.LedControl.Color.Set({ Color: 'Green' });
-		getCurrent();
 	} catch(e) {
 		content.textContent = e.message;
 	}
@@ -60,7 +61,6 @@ yellowButton.addEventListener('click', async function(e) {
 	try {
 	   	//Example of an xapi xCommand
 		xapi.Command.UserInterface.LedControl.Color.Set({ Color: 'Yellow' });
-		getCurrent();
   	} catch(e) {
 		content.textContent = e.message;
    	}
@@ -72,7 +72,6 @@ redButton.addEventListener('click', async function(e) {
    try {
 	   //Example of an xapi xCommand
 		xapi.Command.UserInterface.LedControl.Color.Set({ Color: 'Red' });
-		getCurrent();
    	} catch(e) {
 		content.textContent = e.message;
    	}
@@ -95,7 +94,6 @@ autoButton.addEventListener('click', async function(e) {
    try {
 		xapi.Config.UserInterface.LedControl.Mode.set('Auto');
 		content.textContent = `Set Led Control to Auto`;
-		getCurrent();	
 
    	} catch(e) {
 		content.textContent = e.message;
@@ -121,13 +119,13 @@ function getCurrent() {
 	xapi.Status.UserInterface.LedControl.Color.get().then((color) => {
 		switch(color) {
 			case 'Green':
-				 document.getElementById('ledRect').style.fill = 'green';
+				 document.getElementById('ledRect').style.fill = color;
 				 break;
 			case 'Yellow':
-				 document.getElementById('ledRect').style.fill = 'yellow';
+				 document.getElementById('ledRect').style.fill = color;
 				 break;
 			case 'Red':
-				 document.getElementById('ledRect').style.fill = 'red';
+				 document.getElementById('ledRect').style.fill = color;
 				 break;
 			default: 
 				console.log("Unexpected color")
@@ -137,4 +135,12 @@ function getCurrent() {
     .catch(function(error) {
 		console.log(error);
     });
+}
+
+//Gets the current xStatus of LedControl Color and displays on the page.
+function setupSubscriptions() {
+	//Example xapi xStatus
+	content.textContent = "Setting up subscriptions";
+	xapi.Status.UserInterface.LedControl.Color.on(v =>content.textContent = v);
+	xapi.Status.UserInterface.LedControl.Color.on(v =>document.getElementById('ledRect').style.fill = v);
 }
