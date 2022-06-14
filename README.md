@@ -8,4 +8,5 @@ Current samples:
 
 * [Navigator Web App](./navigator/navigator-webapp/) - Let's you set the LED color of the Navigator
 * [Kiosk Mode](./kiosk-example) - Kiosk mode (Webex Bank example). Shows a simple branded kiosk that let's you place calls
+* [Web app with xAPI access](./webapp-with-xapi) - A web app running on the device that get's direct access to the xAPI
 * [No Zoom](./no-zoom) - Simple example of how to prevent two-finger pinch zoom in a web app
