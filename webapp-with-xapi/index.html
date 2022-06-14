@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+  Web apps that communicates with a Webex device using xapi
+  Web app needs to run on the physical device (not your laptop browser etc)
+  to automatically get xapi access
+  This demo shows how to invoke a command (call someone, set volume)
+  and listen to xfeedback (update volume when system volume is changed elsewhere)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web app with xAPI access</title>
+  <style>
+    * {
+      font-family: arial;
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-size: 20px;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    body > div {
+      margin-bottom: 1em;
+      display: flex;
+      align-items: center;
+    }
+    .error {
+      color: #900;
+    }
+    #volume {
+      width: 12em;
+      border: 1px solid black;
+    }
+    button, input {
+      font-size: inherit;
+      border-radius: 1em;
+      padding: 0.5em 1em;
+      margin: 0 0.5em;
+      outline: 0;
+    }
+    button {
+      background-color: #61ab32;
+      border: 0;
+      color: white;
+      cursor: pointer;
+    }
+    *:disabled {
+      opacity: 0.5;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="error"></div>
+  <div>
+    <input id="call-url" disabled placeholder="Call someone" />
+    <button id="call" disabled>Call</button>
+  </div>
+  <div>
+    <input id="volume" disabled type="range" min="0" max="100" /> Volume
+  </div>
+  <div id="debug"></div>
+</body>
+
+<script>
+let xapi;
+
+// ~jquery like
+const $ = (selector) => document.querySelector(selector);
+
+$('#call').onclick = () => {
+  const url = $('#call-url').value.trim();
+  if (!url) {
+    alert('Specify url to dial');
+  }
+  else {
+    xapi.Command.Dial({ Number: url});
+  }
+}
+
+$('#volume').oninput = () => {
+  const level = $('#volume').value;
+  xapi.Command.Audio.Volume.Set({ Level: level });
+}
+
+function onAudioChange(percent) {
+  const value = parseInt(percent);
+  $('#volume').value = value;
+}
+
+window.onload = init;
+
+async function init() {
+  // the getXAPI is magically inserted into the browser by RoomOS - dont work locally
+  // but you can connect with jsxapi remote too, see:
+  // https://roomos.cisco.com/docs/JSXAPI/Browser.md
+  const hasXapi = !!window.getXAPI;
+  if (!hasXapi) {
+    $('.error').innerText = 'Web app does not have access to xAPI';
+    return;
+  }
+
+  $('#call').disabled = false;
+  $('#volume').disabled = false;
+  $('#call-url').disabled = false;
+  xapi = await window.getXAPI();
+  xapi.Status.Audio.Volume.on(onAudioChange);
+  // set correct intial value for audio
+  const audio = await xapi.Status.Audio.Volume.get();
+  onAudioChange(audio);
+}
+</script>
+
+</html>
