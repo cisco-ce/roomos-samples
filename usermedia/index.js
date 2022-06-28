@@ -1,7 +1,11 @@
+/*
+TODO:
+- add vu meter of microphone
+- add optional warhol / treshold effect on video. or just css filters
+*/
 async function initVideo() {
   const props = {
     video: true,
-    audio: false,
   };
 
   try {
@@ -35,7 +39,7 @@ function sampleMicLevel(stream) {
 }
 
 async function initAudio() {
-  const props = { audio: true, video: false };
+  const props = { audio: true };
   try {
     const audio = await navigator.mediaDevices.getUserMedia(props);
     console.log('got audio');
