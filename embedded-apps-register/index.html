@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embedded app for devices</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/alpinejs@3.9.1/dist/cdn.min.js" defer></script>
+  <script src="main.js" ></script>
+</head>
+<body x-data="data">
+  <main>
+    <div>
+      Register an embedded app as compatible with Webex devices.
+      <p/>
+      Log in on <a target="_blank" href="https://developer.webex.com">developer.webex.com</a>
+      to find the values.
+    </div>
+    <input id="token" x-model="token" placeholder="Bearer token" />
+    <a href="https://developer.webex.com/docs/getting-started#accounts-and-authentication" target="_blank">Find it</a>
+    <input id="appid" x-model="appId" placeholder="App id" />
+    <a href="https://developer.webex.com/my-apps" target="_blank">Find it</a>
+    Command:
+    <textarea readonly :value="url"></textarea>
+    <div class="msg box" x-show="message" x-text="message"></div>
+    <div class="error box" x-show="error" x-text="error"></div>
+    <button id="register" @click="register()" :disabled="!canSubmit()">Register</button>
+  </main>
+
+</body>
+
+</html>
