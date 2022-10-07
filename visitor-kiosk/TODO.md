@@ -1,9 +1,8 @@
 # TODO
 
-- Search for host
-- Send bot message to host
-- Get bot token from url
-
+- Host search:
+  - Show search progress (and not found)
+- Auto-focus input fields?
 - Document
   - How to add token
   - How to allow camera

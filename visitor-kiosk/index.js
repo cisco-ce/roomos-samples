@@ -1,3 +1,10 @@
+const hostMessage = `Hello! A visitor has just arrived in the reception, and registered you as their host.
+
+Details:
+
+* Name: $name
+* Email: $email
+`;
 
 const dataModel = {
   page: 'home', // 'home', 'checkIn', 'findHost', 'checkOut', 'registered'
@@ -18,10 +25,9 @@ const dataModel = {
   },
 
   get validForm() {
-    // skip while developing
-    // if (this.page === 'checkIn') {
-    //   return this.name.trim().length && this.email.match(/\w+@\w+/);
-    // }
+    if (this.page === 'checkIn') {
+      return this.name.trim().length && this.email.match(/\w+@\w+/);
+    }
     return true;
   },
 
@@ -36,17 +42,33 @@ const dataModel = {
 
   registered() {
     this.page = 'registered';
+    const msg = hostMessage
+      .replace('$name', this.name)
+      .replace('$email', this.email);
+    const email = this.host.emails[0];
+    const token = this.getToken();
+
+    sendMessage(token, email, null, msg)
+      .catch(e => {
+        console.warn(e);
+        alert('We were not able to send a message to the host at this time.');
+    });
   },
 
   selectHost(host) {
     this.host = host;
-    this.page = 'registered'; // TODO
+    this.registered();
+  },
+
+  getToken() {
+    // TODO perhaps use localStorage intead?
+    return new URLSearchParams(location.search).get('token');
   },
 
   searchHost() {
     const word = this.host.trim();
 
-    const token = new URLSearchParams(location.search).get('token');
+    const token = this.getToken();
     if (!token) {
       alert('Kiosk does not have bot token to search for people');
       return;
