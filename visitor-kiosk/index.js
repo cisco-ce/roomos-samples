@@ -6,6 +6,7 @@ const dataModel = {
   host: '',
   date: 'October 6, 2022',
   time: '10:35 AM',
+  foundHosts: [],
 
   init() {
     this.updateTimeAndDate();
@@ -37,8 +38,30 @@ const dataModel = {
     this.page = 'registered';
   },
 
+  selectHost(host) {
+    this.host = host;
+    this.page = 'registered'; // TODO
+  },
+
   searchHost() {
-    console.log('search for', this.host);
+    const word = this.host.trim();
+
+    const token = new URLSearchParams(location.search).get('token');
+    if (!token) {
+      alert('Kiosk does not have bot token to search for people');
+      return;
+    }
+
+    if (word.length > 3) {
+      searchPerson(word, token, list => this.foundHosts = list);
+    }
+  },
+
+  getAvatar(person) {
+    const { avatar } = person;
+    return avatar
+      ? { backgroundImage: `url(${avatar.replace('~1600', '~110')})` }
+      : null;
   },
 
   checkOut() {

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <script src="date.format.js"></script>
+  <script src="webex.js"></script>
   <script src="index.js" defer></script>
   <script src="https://unpkg.com/alpinejs@3.9.1/dist/cdn.min.js" defer></script>
 
@@ -27,8 +28,10 @@
     <h1>Welcome</h1>
     <div>Visitor please select an action below.</div>
     <form class="select-action" @submit.prevent="">
-      <button @click="checkIn()" class="primary">Check in</button>
-      <button @click="checkOut()" class="secondary">Check out</button>
+      <div>
+        <button @click="checkIn()" class="primary">Check in</button>
+        <button @click="checkOut()" class="secondary">Check out</button>
+      </div>
     </form>
   </main>
   <main x-show="page === 'checkIn'">
@@ -41,8 +44,10 @@
       <div>
         <input placeholder="Your email address" x-model="email" />
       </div>
-      <button @click="findHost()" :disabled="!validForm" class="primary">Continue</button>
-      <button @click="home()" class="secondary">Cancel</button>
+      <div>
+        <button @click="findHost()" :disabled="!validForm" class="primary">Continue</button>
+        <button @click="home()" class="secondary">Cancel</button>
+      </div>
     </form>
   </main>
   <main x-show="page === 'findHost'">
@@ -52,13 +57,23 @@
       <div>
         <input placeholder="Host name" x-model="host" @input="searchHost()" />
       </div>
-      <button @click="registered()" class="primary">Continue</button>
-      <button @click="home()" class="secondary">Cancel</button>
+      <div class="found-hosts" x-show="foundHosts.length">
+        <template x-for="host in foundHosts">
+          <div class="host" @click="selectHost(host)">
+            <div class="avatar" :style="getAvatar(host)"></div>
+            <div class="name" x-text="host.displayName"></div>
+          </div>
+        </template>
+      </div>
+      <div>
+        <button @click="registered()" class="primary">Continue</button>
+        <button @click="home()" class="secondary">Cancel</button>
+      </div>
     </form>
   </main>
   <main x-show="page === 'registered'">
     <h1>Welcome <span x-text="name"></span></h1>
-    <div>We sent a message to <span x-text="host"></span>  that you have arrived.
+    <div>We sent a message to <span x-text="host.displayName"></span>  that you have arrived.
     <p/>Grab a coffee or drink from the coffee machine while you wait.</div>
     <form class="registered" @submit.prevent="">
       <button @click="home()" class="primary">OK</button>
