@@ -7,6 +7,9 @@
   src: url('./assets/Karla.ttf');
 }
 
+/* avoids alpine.js load blinking */
+[x-cloak] { display: none !important; }
+
 * {
   box-sizing: border-box;
   user-select: none;
@@ -21,7 +24,68 @@ html, body {
 
 body {
   font-family: 'Karla';
+  padding: 1em;
+  font-size: 40px;
   display: flex;
+  flex-direction: column;
+  height: 100%;
   align-items: center;
-  justify-content: center;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+main {
+  text-align: center;
+  max-width: 800px;
+}
+
+main > div {
+  text-align: left;
+}
+
+h2 {
+  margin: 0;
+}
+
+.time {
+  font-size: 1.5em;
+}
+
+input {
+  width: 400px;
+}
+
+button, input {
+  background-color: white;
+  border: 1px solid black;
+  padding: 1em;
+  border-radius: 5px;
+  outline: 0;
+  font-size: 0.8em;
+  margin: 0.5em 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+button.primary {
+  background-color: black;
+  color: white;
+}
+
+:disabled {
+  opacity: 0.3;
+}
+
+form {
+  margin: 1em 0;
 }
