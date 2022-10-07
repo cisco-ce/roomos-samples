@@ -2,8 +2,8 @@ const hostMessage = `Hello! A visitor has just arrived in the reception, and reg
 
 Details:
 
-* Name: $name
-* Email: $email
+* Name: **$name**
+* Email: **$email**
 `;
 
 const dataModel = {
@@ -55,8 +55,8 @@ const dataModel = {
   registered() {
     this.page = 'registered';
     const msg = hostMessage
-      .replace('$name', this.name)
-      .replace('$email', this.email);
+      .replace('$name', this.name.trim())
+      .replace('$email', this.email.trim());
     const email = this.host.emails[0];
     const token = this.getToken();
 
