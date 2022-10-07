@@ -112,6 +112,15 @@ form {
   cursor: pointer;
 }
 
+.help {
+  font-size: 0.6em;
+  font-style: italic;
+}
+
+.name {
+  text-align: left;
+}
+
 .avatar {
   background-color: #ccc;
   background-size: contain;

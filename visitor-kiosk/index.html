@@ -52,11 +52,16 @@
   </main>
   <main x-show="page === 'findHost'">
     <h1>Find your host</h1>
-    <div>Please enter the name of your host.</div>
+    <div x-show="!currentHost">Please enter the name of your host.</div>
     <form class="check-in" @submit.prevent="">
+      <div class="host" x-show="currentHost">
+        <div class="avatar" :style="getAvatar(currentHost)"></div>
+        <div class="name" x-text="currentHost && currentHost.displayName"></div>
+      </div>
       <div>
         <input placeholder="Host name" id="host" x-model="hostSearch" @input="searchHost()" />
       </div>
+      <div class="help" x-text="searchStatus"></div>
       <div class="found-hosts" x-show="foundHosts.length">
         <template x-for="host in foundHosts">
           <div class="host" @click="selectHost(host)">
@@ -66,7 +71,7 @@
         </template>
       </div>
       <div>
-        <!-- <button @click="registered()" class="primary">Continue</button> -->
+        <button :disabled="!currentHost" @click="registered()" class="primary">Continue</button>
         <button @click="home()" class="secondary">Cancel</button>
       </div>
     </form>

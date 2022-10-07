@@ -15,6 +15,7 @@ const dataModel = {
   date: 'October 6, 2022',
   time: '10:35 AM',
   foundHosts: [],
+  searchStatus: '',
 
   init() {
     this.updateTimeAndDate();
@@ -31,6 +32,7 @@ const dataModel = {
     this.email = '';
     this.currentHost = null;
     this.foundHosts = [];
+    this.searchStatus = '';
   },
 
   get validForm() {
@@ -78,7 +80,8 @@ const dataModel = {
 
   selectHost(host) {
     this.currentHost = host;
-    this.registered();
+    this.hostSearch = '';
+    this.foundHosts = [];
   },
 
   getToken() {
@@ -95,13 +98,17 @@ const dataModel = {
       return;
     }
 
-    if (word.length > 3) {
-      searchPerson(word, token, list => this.foundHosts = list);
+    if (word.length > 2) {
+      this.searchStatus = 'Searching...';
+      searchPerson(word, token, list => {
+        this.foundHosts = list;
+        this.searchStatus= 'Found: ' + list.length;
+      });
     }
   },
 
   getAvatar(person) {
-    const { avatar } = person;
+    const { avatar } = person || {};
     return avatar
       ? { backgroundImage: `url(${avatar.replace('~1600', '~110')})` }
       : null;
