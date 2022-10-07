@@ -4,8 +4,12 @@ const dataModel = {
   name: '',
   email: '',
   host: '',
+  date: 'October 6, 2022',
+  time: '10:35 AM',
 
   init() {
+    this.updateTimeAndDate();
+    setInterval(() => this.updateTimeAndDate(), 30 * 1000);
   },
 
   home() {
@@ -41,6 +45,12 @@ const dataModel = {
     this.page = 'checkOut';
   },
 
+
+  updateTimeAndDate() {
+    const now = new Date();
+    this.date = now.format('mmmm d, yyyy');
+    this.time = now.format('HH:MM');
+  }
 };
 
 

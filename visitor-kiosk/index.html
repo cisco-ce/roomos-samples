@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <script src="date.format.js"></script>
   <script src="index.js" defer></script>
   <script src="https://unpkg.com/alpinejs@3.9.1/dist/cdn.min.js" defer></script>
 
@@ -18,8 +19,8 @@
   <header>
     <h2 @click="location.reload()">Simplify</h2>
     <div class="time-date">
-      <div class="date">October 5, 2022</div>
-      <div class="time">10:35 AM</div>
+      <div class="date" x-text="date"></div>
+      <div class="time" x-text="time"></div>
     </div>
   </header>
   <main x-show="page === 'home'">
