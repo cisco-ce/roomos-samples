@@ -1,0 +1,27 @@
+:root {
+  --main-accent: #479D74;
+}
+
+@font-face {
+  font-family: 'Karla';
+  src: url('./assets/Karla.ttf');
+}
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: 'Karla';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
