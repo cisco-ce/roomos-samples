@@ -5,9 +5,9 @@
 - Icon / favicon
 - Create dedicated bot
 - Document
+  - Purpose of kiosk
   - How to add token
   - How to allow camera
-  - Purpose of kiosk
 
 
 ## Feature ideas

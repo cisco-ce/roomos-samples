@@ -61,7 +61,7 @@
         <template x-for="host in foundHosts">
           <div class="host" @click="selectHost(host)">
             <div class="avatar" :style="getAvatar(host)"></div>
-            <div class="name" x-text="host.displayName"></div>
+            <div class="name" x-text="host && host.displayName"></div>
           </div>
         </template>
       </div>
@@ -73,7 +73,7 @@
   </main>
   <main x-show="page === 'registered'">
     <h1>Welcome <span x-text="name"></span></h1>
-    <div>We sent a message to <span x-text="host.displayName"></span>  that you have arrived.
+    <div>We sent a message to <span x-text="host && host.displayName"></span>  that you have arrived.
     <p/>Grab a coffee or drink from the coffee machine while you wait.</div>
     <form class="registered" @submit.prevent="">
       <button @click="home()" class="primary">OK</button>

@@ -10,7 +10,7 @@ const dataModel = {
   page: 'home', // 'home', 'checkIn', 'findHost', 'checkOut', 'registered'
   name: '',
   email: '',
-  host: '',
+  host: null,
   date: 'October 6, 2022',
   time: '10:35 AM',
   foundHosts: [],
@@ -22,6 +22,14 @@ const dataModel = {
 
   home() {
     this.page = 'home';
+    this.reset();
+  },
+
+  reset() {
+    this.name = '';
+    this.email = '';
+    this.host = null;
+    this.foundHosts = [];
   },
 
   get validForm() {
