@@ -33,11 +33,23 @@ const dataModel = {
 
   checkIn() {
     this.page = 'checkIn';
+    this.focus('#name');
+  },
+
+  focus(id) {
+    // need to wait for DOM to be updated
+    setTimeout(() => {
+      const firstInput = document.querySelector(id);
+      if (firstInput) {
+        firstInput.focus();
+      }
+    }, 100);
+
   },
 
   findHost() {
     this.page = 'findHost';
-    console.log('register', this.name, this.email);
+    this.focus('#host');
   },
 
   registered() {

@@ -39,7 +39,7 @@
     <div>Please enter your name and email below.</div>
     <form class="check-in" @submit.prevent="">
       <div>
-        <input placeholder="Full name" x-model="name" />
+        <input placeholder="Full name" id="name" x-model="name" />
       </div>
       <div>
         <input placeholder="Your email address" x-model="email" />
@@ -55,7 +55,7 @@
     <div>Please enter the name of your host.</div>
     <form class="check-in" @submit.prevent="">
       <div>
-        <input placeholder="Host name" x-model="host" @input="searchHost()" />
+        <input placeholder="Host name" id="host" x-model="host" @input="searchHost()" />
       </div>
       <div class="found-hosts" x-show="foundHosts.length">
         <template x-for="host in foundHosts">

@@ -2,11 +2,15 @@
 
 - Host search:
   - Show search progress (and not found)
-- Auto-focus input fields?
+- Icon / favicon
+- Create dedicated bot
 - Document
   - How to add token
   - How to allow camera
   - Purpose of kiosk
+
+
+## Feature ideas
 
 - Take photo when registering
 - Send photo to host (and tell why). Ask for confirmation
