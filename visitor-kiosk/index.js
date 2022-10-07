@@ -10,7 +10,8 @@ const dataModel = {
   page: 'home', // 'home', 'checkIn', 'findHost', 'checkOut', 'registered'
   name: '',
   email: '',
-  host: null,
+  hostSearch: '',
+  currentHost: null,
   date: 'October 6, 2022',
   time: '10:35 AM',
   foundHosts: [],
@@ -28,7 +29,7 @@ const dataModel = {
   reset() {
     this.name = '';
     this.email = '';
-    this.host = null;
+    this.currentHost = null;
     this.foundHosts = [];
   },
 
@@ -65,7 +66,7 @@ const dataModel = {
     const msg = hostMessage
       .replace('$name', this.name.trim())
       .replace('$email', this.email.trim());
-    const email = this.host.emails[0];
+    const email = this.currentHost.emails[0];
     const token = this.getToken();
 
     sendMessage(token, email, null, msg)
@@ -76,7 +77,7 @@ const dataModel = {
   },
 
   selectHost(host) {
-    this.host = host;
+    this.currentHost = host;
     this.registered();
   },
 
@@ -86,7 +87,7 @@ const dataModel = {
   },
 
   searchHost() {
-    const word = this.host.trim();
+    const word = this.hostSearch.trim();
 
     const token = this.getToken();
     if (!token) {

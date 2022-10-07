@@ -55,7 +55,7 @@
     <div>Please enter the name of your host.</div>
     <form class="check-in" @submit.prevent="">
       <div>
-        <input placeholder="Host name" id="host" x-model="host" @input="searchHost()" />
+        <input placeholder="Host name" id="host" x-model="hostSearch" @input="searchHost()" />
       </div>
       <div class="found-hosts" x-show="foundHosts.length">
         <template x-for="host in foundHosts">
@@ -73,7 +73,9 @@
   </main>
   <main x-show="page === 'registered'">
     <h1>Welcome <span x-text="name"></span></h1>
-    <div>We sent a message to <span x-text="host && host.displayName"></span>  that you have arrived.
+    <div>We sent a message to
+      <span x-text="currentHost && currentHost.displayName"></span>
+      that you have arrived.
     <p/>Grab a coffee or drink from the coffee machine while you wait.</div>
     <form class="registered" @submit.prevent="">
       <button @click="home()" class="primary">OK</button>
