@@ -70,6 +70,7 @@ button, input {
   border-radius: 5px;
   outline: 0;
   font-size: 0.8em;
+  margin: 0 0.5em;
 }
 
 button {
@@ -129,3 +130,12 @@ form {
   height: 2em;
   width: 2em;
 }
+
+.webcam, .photo {
+  width: 600px;
+  height: 337px;
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+

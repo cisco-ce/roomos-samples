@@ -71,10 +71,28 @@
         </template>
       </div>
       <div>
-        <button :disabled="!currentHost" @click="registered()" class="primary">Continue</button>
+        <button :disabled="!currentHost" @click="next()" class="primary">Continue</button>
         <button @click="home()" class="secondary">Cancel</button>
       </div>
     </form>
+  </main>
+  <main x-show="page === 'photo'">
+    <h1>Take a photo</h1>
+    <video class="webcam" x-show="!photo" autoplay></video>
+    <canvas class="photo" x-show="photo"></canvas>
+    <div>
+      <button @click="takePhoto()" x-show="!photo">Snap</button>
+      <button @click="photo = null" x-show="photo">Re-take</button>
+      <button @click="next()" x-show="photo" class="primary">Next</button>
+    </div>
+  </main>
+  <main x-show="page === 'confirm'">
+    <h1>Confirm</h1>
+    <div>Confirm your details</div>
+    <div>
+      <button @click="next()" :disabled="!validForm" class="primary">Continue</button>
+      <button @click="home()" class="secondary">Cancel</button>
+    </div>
   </main>
   <main x-show="page === 'registered'">
     <h1>Welcome <span x-text="name"></span></h1>

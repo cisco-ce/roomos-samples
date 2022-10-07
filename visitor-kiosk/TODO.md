@@ -11,6 +11,7 @@
   - How to add token
   - How to allow camera
 - Translate to french too
+- Back button in wizard?
 
 
 ## Feature ideas

@@ -7,7 +7,7 @@ Details:
 `;
 
 const dataModel = {
-  page: 'home', // 'home', 'checkIn', 'findHost', 'checkOut', 'registered'
+  page: 'home', // 'home', 'checkIn', 'findHost', 'checkOut', 'photo', 'confim', 'registered'
   name: '',
   email: '',
   hostSearch: '',
@@ -16,6 +16,7 @@ const dataModel = {
   time: '10:35 AM',
   foundHosts: [],
   searchStatus: '',
+  photo: null,
 
   init() {
     this.updateTimeAndDate();
@@ -33,6 +34,7 @@ const dataModel = {
     this.currentHost = null;
     this.foundHosts = [];
     this.searchStatus = '';
+    this.photo = null;
   },
 
   get validForm() {
@@ -63,7 +65,7 @@ const dataModel = {
     this.focus('#host');
   },
 
-  registered() {
+  register() {
     this.page = 'registered';
     const msg = hostMessage
       .replace('$name', this.name.trim())
@@ -87,6 +89,56 @@ const dataModel = {
   getToken() {
     // TODO perhaps use localStorage intead?
     return new URLSearchParams(location.search).get('token');
+  },
+
+  next() {
+    const { page } = this;
+    if (page === 'findHost') {
+      this.showPhotoPage();
+    }
+    else if (page === 'photo') {
+      this.showConfirmation();
+    }
+    else if (page === 'confirm') {
+      this.register();
+    }
+    else {
+      console.error('unknown next page');
+    }
+  },
+
+  showConfirmation() {
+    this.page = 'confirm';
+  },
+
+  async showPhotoPage() {
+    this.page = 'photo';
+    try {
+      if (navigator.mediaDevices.getUserMedia) {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const video = document.querySelector('.webcam');
+        video.srcObject = stream;
+      }
+    }
+    catch(e) {
+      console.error('not able to get video', e);
+    }
+  },
+
+  takePhoto() {
+    const w = 600;
+    const h = 337;
+    const canvas = document.querySelector('.photo');
+    canvas.setAttribute('width', w);
+    canvas.setAttribute('height', h);
+
+    const video = document.querySelector('.webcam');
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(video, 0, 0, 600, 337);
+    this.photo = canvas.toDataURL('image/png');
+
+    // to compress for jpeg for webex cards, look at:
+    // https://github.com/jpeg-js/jpeg-js/blob/master/lib/encoder.js
   },
 
   searchHost() {
