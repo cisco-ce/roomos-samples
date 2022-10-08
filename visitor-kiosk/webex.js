@@ -15,11 +15,11 @@ async function get(url, token) {
   try {
     const data = await fetch(url, options);
     const json = await data.json();
-    return json.items || null;
+    return json.items || [];
   }
   catch(e) {
     console.log('not able to fetch');
-    return null;
+    return [];
   }
 }
 
