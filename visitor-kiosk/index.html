@@ -8,7 +8,8 @@
   <script src="date.format.js"></script>
   <script src="webex.js"></script>
   <script src="index.js" defer></script>
-  <script src="https://unpkg.com/alpinejs@3.9.1/dist/cdn.min.js" defer></script>
+  <script src="alpine.js" defer></script>
+  <!-- <script src="https://unpkg.com/alpinejs@3.9.1/dist/cdn.min.js" defer></script> -->
 
   <title>Webex Visitor Kiosk</title>
 
@@ -78,12 +79,16 @@
   </main>
   <main x-show="page === 'photo'">
     <h1>Take a photo</h1>
-    <video class="webcam" x-show="!photo" autoplay></video>
-    <canvas class="photo" x-show="photo"></canvas>
+    <div class="box">
+      <video class="webcam" x-show="!photo" autoplay></video>
+      <canvas class="photo" x-show="photo"></canvas>
+      <div class="countdown" x-text="photoTime" x-show="photoTime > 0"></div>
+    </div>
     <div class="action">
-      <button @click="takePhoto()" x-show="!photo">Snap</button>
-      <button @click="photo = null" x-show="photo">Re-take</button>
+      <button @click="takePhotoCountdown()" x-show="!photo">Snap</button>
+      <button @click="photo = null;" x-show="photo">Re-take</button>
       <button @click="next()" x-show="photo" class="primary">Next</button>
+      <button @click="next()" x-show="!photo">Skip</button>
     </div>
   </main>
   <main x-show="page === 'confirm'">

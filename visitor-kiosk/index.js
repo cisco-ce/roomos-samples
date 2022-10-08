@@ -17,10 +17,13 @@ const dataModel = {
   foundHosts: [],
   searchStatus: '',
   photo: null,
+  photoTimer: 0,
+  photoTime: 0,
 
   init() {
     this.updateTimeAndDate();
     setInterval(() => this.updateTimeAndDate(), 30 * 1000);
+    this.showPhotoPage();
   },
 
   home() {
@@ -35,6 +38,7 @@ const dataModel = {
     this.foundHosts = [];
     this.searchStatus = '';
     this.photo = null;
+    clearInterval(this.photoTimer);
   },
 
   get validForm() {
@@ -130,6 +134,18 @@ const dataModel = {
     catch(e) {
       console.error('not able to get video', e);
     }
+  },
+
+  takePhotoCountdown() {
+    clearInterval(this.photoTimer);
+    this.photoTime = 3;
+    this.photoTimer = setInterval(() => {
+      this.photoTime -= 1;
+      if (this.photoTime < 1) {
+        clearInterval(this.photoTimer);
+        this.takePhoto();
+      }
+    }, 1000);
   },
 
   takePhoto() {

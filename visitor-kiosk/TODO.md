@@ -3,6 +3,7 @@
 - Send card instead of message to host
 - Icon / favicon
 - Create dedicated bot
+- Also send message to a common space
 - Document
   - Purpose of kiosk
   - How to add token

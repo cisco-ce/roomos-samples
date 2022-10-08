@@ -149,3 +149,20 @@ form {
   border-radius: 10px;
 }
 
+.box {
+  position: relative;
+}
+
+.countdown {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  color: white;
+}
+
