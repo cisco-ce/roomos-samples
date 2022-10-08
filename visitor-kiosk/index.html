@@ -28,9 +28,9 @@
     <h1>Welcome</h1>
     <div>Visitor please select an action below.</div>
     <form class="select-action" @submit.prevent="">
-      <div>
-        <button @click="next()" class="primary">Check in</button>
+      <div class="action">
         <button @click="checkOut()" class="secondary">Check out</button>
+        <button @click="next()" class="primary">Check in</button>
       </div>
     </form>
   </main>
@@ -44,9 +44,9 @@
       <div>
         <input placeholder="Your email address" x-model="email" />
       </div>
-      <div>
-        <button @click="next()" :disabled="!validForm" class="primary">Continue</button>
+      <div class="action">
         <button @click="home()" class="secondary">Cancel</button>
+        <button @click="next()" :disabled="!validForm" class="primary">Continue</button>
       </div>
     </form>
   </main>
@@ -70,9 +70,9 @@
           </div>
         </template>
       </div>
-      <div>
-        <button :disabled="!currentHost" @click="next()" class="primary">Continue</button>
+      <div class="action">
         <button @click="home()" class="secondary">Cancel</button>
+        <button :disabled="!currentHost" @click="next()" class="primary">Continue</button>
       </div>
     </form>
   </main>
@@ -80,7 +80,7 @@
     <h1>Take a photo</h1>
     <video class="webcam" x-show="!photo" autoplay></video>
     <canvas class="photo" x-show="photo"></canvas>
-    <div>
+    <div class="action">
       <button @click="takePhoto()" x-show="!photo">Snap</button>
       <button @click="photo = null" x-show="photo">Re-take</button>
       <button @click="next()" x-show="photo" class="primary">Next</button>
@@ -97,9 +97,9 @@
       <div class="key">Visiting</div>
       <div class="value" x-text="currentHost && currentHost.displayName"></div>
     </div>
-    <div>
-      <button @click="next()" :disabled="!validForm" class="primary">Continue</button>
+    <div class="action">
       <button @click="home()" class="secondary">Cancel</button>
+      <button @click="next()" :disabled="!validForm" class="primary">Continue</button>
     </div>
   </main>
   <main x-show="page === 'registered'">
