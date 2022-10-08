@@ -7,7 +7,7 @@ Details:
 `;
 
 const dataModel = {
-  page: 'home', // 'home', 'checkIn', 'findHost', 'checkOut', 'photo', 'confim', 'registered'
+  page: 'home', // home > checkIn > findHost > photo > confim > registered | checkOut
   name: '',
   email: '',
   hostSearch: '',
@@ -92,8 +92,15 @@ const dataModel = {
   },
 
   next() {
+    // home > checkIn > findHost > photo > confim > registered
     const { page } = this;
-    if (page === 'findHost') {
+    if (page === 'home') {
+      this.checkIn();
+    }
+    else if (page === 'checkIn') {
+      this.findHost();
+    }
+    else if (page === 'findHost') {
       this.showPhotoPage();
     }
     else if (page === 'photo') {
