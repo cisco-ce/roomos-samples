@@ -1,6 +1,7 @@
 let currentSearchNumber = 0;
 
 const webexMsgUrl = 'https://webexapis.com/v1/messages';
+const webexSearchUrl = 'https://webexapis.com/v1/people?displayName=';
 
 async function get(url, token) {
   if (!token) throw(new Error('No webex token specified'));
@@ -22,16 +23,20 @@ async function get(url, token) {
   }
 }
 
-function sendMessage(token, toPersonEmail, roomId, markdown) {
-  const body = Object.assign({ markdown }, toPersonEmail ? { toPersonEmail } : { roomId });
-  // console.log('send', { token, toPersonEmail, markdown });
+function sendMessage(token, toPersonEmail, markdown, file) {
+  const formData = new FormData();
+  if (file) {
+    formData.append('files', file);
+  }
+  formData.set('markdown', markdown);
+  formData.set('toPersonEmail', toPersonEmail);
+
   const options = {
     headers: {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + token,
+      Authorization: 'Bearer ' + token,
     },
-    body: JSON.stringify(body),
-    method: 'POST'
+    method: 'POST',
+    body: formData,
   };
 
   return fetch(webexMsgUrl, options);
@@ -42,12 +47,11 @@ async function searchPerson(keyword, token, callback) {
 
   currentSearchNumber++;
   const id = currentSearchNumber; // avoid closure
-  const url = `https://webexapis.com/v1/people?displayName=${keyword}`;
+  const url = webexSearchUrl + keyword;
   const result = await get(url, token);
 
   // a newer search has been requested, discard this one
   if (id < currentSearchNumber) {
-    console.log('skipping search', currentSearchNumber);
     return;
   }
 

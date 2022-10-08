@@ -73,12 +73,12 @@ const dataModel = {
     const email = this.currentHost.emails[0];
     const token = this.getToken();
 
-    sendMessage(token, email, null, msg)
+    sendMessage(token, email, msg, this.photo)
       .catch(e => {
         console.warn(e);
         alert('We were not able to send a message to the host at this time.');
-    });
-  },
+      });
+   },
 
   selectHost(host) {
     this.currentHost = host;
@@ -142,7 +142,12 @@ const dataModel = {
     const video = document.querySelector('.webcam');
     const ctx = canvas.getContext('2d');
     ctx.drawImage(video, 0, 0, 600, 337);
-    this.photo = canvas.toDataURL('image/png');
+    // this.photo = canvas.toDataURL('image/jpeg');
+
+    const format = 'jpeg';
+    this.photo = canvas.toBlob(photo => {
+      this.photo = new File([photo], this.name + '.' + format, { type: "image/" + format, });
+    }, 'image/' + format);
 
     // to compress for jpeg for webex cards, look at:
     // https://github.com/jpeg-js/jpeg-js/blob/master/lib/encoder.js
