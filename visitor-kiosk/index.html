@@ -89,6 +89,14 @@
   <main x-show="page === 'confirm'">
     <h1>Confirm</h1>
     <div>Confirm your details</div>
+    <div class="table">
+      <div class="key">Name:</div>
+      <div class="value" x-text="name"></div>
+      <div class="key">Email:</div>
+      <div class="value" x-text="email"></div>
+      <div class="key">Visiting</div>
+      <div class="value" x-text="currentHost && currentHost.displayName"></div>
+    </div>
     <div>
       <button @click="next()" :disabled="!validForm" class="primary">Continue</button>
       <button @click="home()" class="secondary">Cancel</button>

@@ -106,6 +106,16 @@ form {
   border-radius: 10px;
 }
 
+.table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 1em 0;
+}
+
+.table .key {
+  font-style: italic;
+}
+
 .host {
   display: flex;
   align-items: center;
