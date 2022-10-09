@@ -19,6 +19,7 @@ const dataModel = {
   photo: null,
   photoTimer: 0,
   photoTime: 0,
+  videoStream: null,
 
   init() {
     this.updateTimeAndDate();
@@ -119,6 +120,7 @@ const dataModel = {
   },
 
   showConfirmation() {
+    this.stopCamera();
     this.page = 'confirm';
   },
 
@@ -126,13 +128,21 @@ const dataModel = {
     this.page = 'photo';
     try {
       if (navigator.mediaDevices.getUserMedia) {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        this.videoStream = await navigator.mediaDevices.getUserMedia({ video: true });
         const video = document.querySelector('.webcam');
-        video.srcObject = stream;
+        video.srcObject = this.videoStream;
       }
     }
     catch(e) {
       console.error('not able to get video', e);
+    }
+  },
+
+  stopCamera() {
+    if (this.videoStream) {
+      this.videoStream.getTracks().forEach(track => {
+        track.stop();
+      });
     }
   },
 
