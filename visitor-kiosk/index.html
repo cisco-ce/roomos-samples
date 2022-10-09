@@ -84,7 +84,7 @@
       <canvas class="photo" x-show="photo"></canvas>
       <div class="countdown" x-text="photoTime" x-show="photoTime > 0"></div>
     </div>
-    <div class="action">
+    <div class="action" x-show="photoTime < 1">
       <button @click="takePhotoCountdown()" x-show="!photo">Snap</button>
       <button @click="photo = null;" x-show="photo">Re-take</button>
       <button @click="next()" x-show="photo" class="primary">Next</button>

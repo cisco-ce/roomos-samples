@@ -21,3 +21,4 @@
 - Office map
 - While you are waiting: Coffee info | Toilet
 - Checkout: scan QR
+- Try this as touch app on navigator too
