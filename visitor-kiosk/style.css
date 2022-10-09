@@ -123,6 +123,10 @@ form {
   cursor: pointer;
 }
 
+.action {
+  text-align: center;
+}
+
 .help {
   font-size: 0.6em;
   font-style: italic;
