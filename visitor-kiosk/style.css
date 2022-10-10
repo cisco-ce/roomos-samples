@@ -44,6 +44,7 @@ header {
   display: flex;
   justify-content: space-between;
   width: calc(100% - 2em);
+  font-size: 0.7em;
 }
 
 main {
