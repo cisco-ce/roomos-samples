@@ -129,11 +129,24 @@
   </main>
   <main x-show="page === 'checkOut'">
     <h1>Check out</h1>
-    <div>Scan your badge to check out.</div>
-    <form class="check-out" @submit.prevent="">
-      <button @click="home()" class="secondary">Back</button>
+    <div>Enter your email to check out.</div>
+    <form @submit.prevent="">
+      <div>
+        <input placeholder="Email address" x-model="email" @keydown.enter.prevent="if (validForm) next()"/>
+      </div>
+      <div class="action">
+        <button @click="home()" class="secondary">Back</button>
+        <button @click="next()" :disabled="!validForm" class="primary">Continue</button>
+      </div>
     </form>
   </main>
+  <main x-show="page === 'checkOutResult'">
+    <h1>Checked out</h1>
+    <div>You were checked out. See you soon!</div>
+    <div class="action">
+      <button @click="home()" :disabled="!validForm" class="primary">Continue</button>
+    </div>
+</main>
 </body>
 
 </html>

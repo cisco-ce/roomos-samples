@@ -7,7 +7,8 @@ Details:
 `;
 
 const dataModel = {
-  page: 'home', // home > checkIn > findHost > confirmHost > photo > confim > registered | checkOut
+// home > checkIn > findHost > confirmHost > photo > confim > registered | checkOut > checkOutResult
+  page: 'home',
   name: '',
   email: '',
   hostSearch: '',
@@ -43,8 +44,12 @@ const dataModel = {
   },
 
   get validForm() {
+    const emailPattern = /\w+@\w+/;
     if (this.page === 'checkIn') {
-      return this.name.trim().length && this.email.match(/\w+@\w+/);
+      return this.name.trim().length && this.email.match(emailPattern);
+    }
+    else if (this.page === 'checkOut') {
+      return this.email.match(emailPattern);
     }
     return true;
   },
@@ -105,6 +110,7 @@ const dataModel = {
   next() {
     // home > checkIn > findHost > photo > confim > registered
     const { page } = this;
+
     if (page === 'home') {
       this.checkIn();
     }
@@ -122,6 +128,9 @@ const dataModel = {
     }
     else if (page === 'confirm') {
       this.register();
+    }
+    else if (page === 'checkOut') {
+      this.page = 'checkOutResult';
     }
     else {
       console.error('unknown next page');
@@ -155,6 +164,10 @@ const dataModel = {
   showConfirmation() {
     this.stopCamera();
     this.page = 'confirm';
+  },
+
+  checkout() {
+    this.page = 'checkOutResult';
   },
 
   async showPhotoPage() {
