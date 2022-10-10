@@ -30,6 +30,7 @@ body {
   flex-direction: column;
   height: 100%;
   align-items: center;
+  justify-content: center;
 }
 
 .spacer {
@@ -37,9 +38,12 @@ body {
 }
 
 header {
+  position: absolute;
+  top: 1em;
+  left: 1em;
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: calc(100% - 2em);
 }
 
 main {
@@ -64,6 +68,7 @@ input, .found-hosts {
 }
 
 button, input {
+  font-family: inherit;
   background-color: white;
   border: 1px solid black;
   padding: 1em;
