@@ -180,6 +180,8 @@ const dataModel = {
   },
 
   takePhotoCountdown() {
+    this.photo = null;
+    document.querySelector('.photo-flash').classList.remove('blink');
     clearInterval(this.photoTimer);
     this.photoTime = 3;
     this.photoTimer = setInterval(() => {
@@ -193,6 +195,8 @@ const dataModel = {
 
   takePhoto() {
     document.querySelector('#shutter-sound').play();
+    document.querySelector('.photo-flash').classList.add('blink');
+
     const w = 600;
     const h = 337;
     const canvas = document.querySelector('.photo');

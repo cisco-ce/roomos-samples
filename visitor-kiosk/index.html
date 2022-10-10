@@ -89,14 +89,15 @@
       <video class="webcam" x-show="!photo" autoplay></video>
       <canvas class="photo" x-show="photo"></canvas>
       <div class="countdown" x-text="photoTime" x-show="photoTime > 0"></div>
+      <div class="photo-flash"></div>
     </div>
-    <div class="action" x-show="photoTime < 1">
+    <div class="action">
       <button @click="next()" class="link">Skip photo</button>
       <br/>
-      <button @click="back()" class="secondary">Back</button>
-      <button @click="takePhotoCountdown()" class="primary" x-show="!photo">Take photo</button>
-      <button @click="photo = null;" x-show="photo">Re-take</button>
-      <button @click="next()" x-show="photo" class="primary">Next</button>
+      <button :disabled="photoTime > 0" @click="back()" class="secondary">Back</button>
+      <button :disabled="photoTime > 0" @click="takePhotoCountdown()" class="primary" x-show="!photo">Take photo</button>
+      <button @click="takePhotoCountdown()" x-show="photo">Re-take</button>
+      <button :disabled="photoTime > 0" @click="next()" x-show="photo" class="primary">Next</button>
     </div>
     <audio src="assets/shutter.mp3" id="shutter-sound"></audio>
   </main>

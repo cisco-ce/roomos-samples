@@ -171,7 +171,7 @@ form {
   position: relative;
 }
 
-.countdown {
+.countdown, .photo-flash {
   position: absolute;
   top: 0;
   left: 0;
@@ -183,6 +183,24 @@ form {
   font-size: 100px;
   color: white;
 }
+
+.blink {
+  animation-name: flash;
+  animation-duration: 0.3s;
+}
+
+@keyframes flash {
+  0% {
+    background-color: #fff0;
+  }
+  50% {
+    background-color: #ffff;
+  }
+  100% {
+    background-color: #fff0;
+  }
+}
+
 
 @media (max-height: 1000px) {
   /** when not in fullscreen / 1080p, make content fit */
