@@ -124,6 +124,27 @@ const dataModel = {
     }
   },
 
+  back() {
+    // home > checkIn > findHost > photo > confim > registered | checkOut
+    const { page } = this;
+    if (page === 'checkIn') {
+      this.home();
+    }
+    else if (page === 'findHost') {
+      this.checkIn();
+    }
+    else if (page === 'photo') {
+      this.findHost();
+    }
+    else if (page === 'confirm') {
+      this.showPhotoPage();
+    }
+    else {
+      console.error('unknown previous page');
+    }
+
+  },
+
   showConfirmation() {
     this.stopCamera();
     this.page = 'confirm';

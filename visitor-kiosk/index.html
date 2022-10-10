@@ -46,7 +46,7 @@
         <input placeholder="Your email address" x-model="email" @keydown.enter.prevent="if (validForm) next()"/>
       </div>
       <div class="action">
-        <button @click="home()" class="secondary">Cancel</button>
+        <button @click="home()" class="secondary">Back</button>
         <button @click="next()" :disabled="!validForm" class="primary">Continue</button>
       </div>
     </form>
@@ -72,7 +72,7 @@
         </template>
       </div>
       <div class="action">
-        <button @click="home()" class="secondary">Cancel</button>
+        <button @click="back()" class="secondary">Back</button>
         <button :disabled="!currentHost" @click="next()" class="primary">Continue</button>
       </div>
     </form>
@@ -87,6 +87,7 @@
     <div class="action" x-show="photoTime < 1">
       <button @click="next()" class="link">Skip photo</button>
       <br/>
+      <button @click="back()" class="secondary">Back</button>
       <button @click="takePhotoCountdown()" x-show="!photo">Take photo</button>
       <button @click="photo = null;" x-show="photo">Re-take</button>
       <button @click="next()" x-show="photo" class="primary">Next</button>
@@ -104,7 +105,7 @@
       <div class="value" x-text="currentHost && currentHost.displayName"></div>
     </div>
     <div class="action">
-      <button @click="home()" class="secondary">Cancel</button>
+      <button @click="back()" class="secondary">Back</button>
       <button @click="next()" :disabled="!validForm" class="primary">Continue</button>
     </div>
   </main>
@@ -122,7 +123,7 @@
     <h1>Check out</h1>
     <div>Scan your badge to check out.</div>
     <form class="check-out" @submit.prevent="">
-      <button @click="home()" class="secondary">Cancel</button>
+      <button @click="home()" class="secondary">Back</button>
     </form>
   </main>
 </body>
