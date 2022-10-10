@@ -1,5 +1,17 @@
 # TODO
 
+- center main content on screen
+- make time/date smaller, logo too?
+- use image of logo not text
+- dont show input field after selecting host
+- back button
+- go home after timeout on last page
+
+- photo
+  - add outline to countdown
+  - add camera sound
+  - flash when taking picture
+
 - Send card instead of message to host (create smaller photo)
 - Icon / favicon
 - Create dedicated bot
