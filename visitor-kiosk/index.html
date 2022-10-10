@@ -43,7 +43,7 @@
         <input placeholder="Full name" id="name" x-model="name" />
       </div>
       <div>
-        <input placeholder="Your email address" x-model="email" />
+        <input placeholder="Your email address" x-model="email" @keydown.enter.prevent="if (validForm) next()"/>
       </div>
       <div class="action">
         <button @click="home()" class="secondary">Cancel</button>
