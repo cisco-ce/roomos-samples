@@ -1,6 +1,6 @@
 # TODO
 
-- Send card instead of message to host
+- Send card instead of message to host (create smaller photo)
 - Icon / favicon
 - Create dedicated bot
 - Also send message to a common space
@@ -9,8 +9,8 @@
   - How to add token
   - How to allow camera
 
-- Translate to french too?
 - Back button in wizard?
+- Translate to french too?
 
 
 ## Feature ideas

@@ -24,7 +24,7 @@ const dataModel = {
   init() {
     this.updateTimeAndDate();
     setInterval(() => this.updateTimeAndDate(), 30 * 1000);
-    this.showPhotoPage();
+    // this.showPhotoPage();
   },
 
   home() {
@@ -75,6 +75,10 @@ const dataModel = {
     const msg = hostMessage
       .replace('$name', this.name.trim())
       .replace('$email', this.email.trim());
+    if (!this.currentHost) {
+      return;
+    }
+
     const email = this.currentHost.emails[0];
     const token = this.getToken();
 
@@ -207,7 +211,6 @@ const dataModel = {
   checkOut() {
     this.page = 'checkOut';
   },
-
 
   updateTimeAndDate() {
     const now = new Date();

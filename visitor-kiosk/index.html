@@ -85,10 +85,11 @@
       <div class="countdown" x-text="photoTime" x-show="photoTime > 0"></div>
     </div>
     <div class="action" x-show="photoTime < 1">
-      <button @click="takePhotoCountdown()" x-show="!photo">Snap</button>
+      <button @click="next()" class="link">Skip photo</button>
+      <br/>
+      <button @click="takePhotoCountdown()" x-show="!photo">Take photo</button>
       <button @click="photo = null;" x-show="photo">Re-take</button>
       <button @click="next()" x-show="photo" class="primary">Next</button>
-      <button @click="next()" x-show="!photo">Skip</button>
     </div>
   </main>
   <main x-show="page === 'confirm'">
