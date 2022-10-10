@@ -192,6 +192,7 @@ const dataModel = {
   },
 
   takePhoto() {
+    document.querySelector('#shutter-sound').play();
     const w = 600;
     const h = 337;
     const canvas = document.querySelector('.photo');

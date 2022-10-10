@@ -1,10 +1,5 @@
 # TODO
 
-- center main content on screen
-- make time/date smaller, logo too?
-- use image of logo not text
-- dont show input field after selecting host
-- back button
 - go home after timeout on last page
 
 - photo

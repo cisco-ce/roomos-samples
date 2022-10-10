@@ -98,6 +98,7 @@
       <button @click="photo = null;" x-show="photo">Re-take</button>
       <button @click="next()" x-show="photo" class="primary">Next</button>
     </div>
+    <audio src="assets/shutter.mp3" id="shutter-sound"></audio>
   </main>
   <main x-show="page === 'confirm'">
     <h1>Confirm</h1>
