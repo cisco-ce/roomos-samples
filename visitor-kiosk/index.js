@@ -199,6 +199,10 @@ const dataModel = {
         this.searchStatus= 'Found: ' + list.length;
       });
     }
+    else {
+      this.foundHosts = [];
+      this.searchStatus = '';
+    }
   },
 
   getAvatar(person) {
