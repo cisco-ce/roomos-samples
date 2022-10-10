@@ -7,7 +7,7 @@ Details:
 `;
 
 const dataModel = {
-  page: 'home', // home > checkIn > findHost > photo > confim > registered | checkOut
+  page: 'home', // home > checkIn > findHost > confirmHost > photo > confim > registered | checkOut
   name: '',
   email: '',
   hostSearch: '',
@@ -94,6 +94,7 @@ const dataModel = {
     this.hostSearch = '';
     this.searchStatus = '';
     this.foundHosts = [];
+    this.next();
   },
 
   getToken() {
@@ -111,6 +112,9 @@ const dataModel = {
       this.findHost();
     }
     else if (page === 'findHost') {
+      this.confirmHost();
+    }
+    else if (page === 'confirmHost') {
       this.showPhotoPage();
     }
     else if (page === 'photo') {
@@ -133,8 +137,11 @@ const dataModel = {
     else if (page === 'findHost') {
       this.checkIn();
     }
-    else if (page === 'photo') {
+    else if (page === 'confirmHost') {
       this.findHost();
+    }
+    else if (page === 'photo') {
+      this.confirmHost();
     }
     else if (page === 'confirm') {
       this.showPhotoPage();
@@ -225,6 +232,10 @@ const dataModel = {
       this.foundHosts = [];
       this.searchStatus = '';
     }
+  },
+
+  confirmHost() {
+    this.page = 'confirmHost';
   },
 
   getAvatar(person) {

@@ -55,10 +55,6 @@
     <h1>Find your host</h1>
     <div x-show="!currentHost">Please enter the name of your host.</div>
     <form class="check-in" @submit.prevent="">
-      <div class="host" x-show="currentHost">
-        <div class="avatar" :style="getAvatar(currentHost)"></div>
-        <div class="name" x-text="currentHost && currentHost.displayName"></div>
-      </div>
       <div>
         <input placeholder="Host name" id="host" x-model="hostSearch" @input="searchHost()" />
       </div>
@@ -73,9 +69,19 @@
       </div>
       <div class="action">
         <button @click="back()" class="secondary">Back</button>
-        <button :disabled="!currentHost" @click="next()" class="primary">Continue</button>
       </div>
     </form>
+  </main>
+  <main x-show="page === 'confirmHost'">
+    <h1>Selected Host</h1>
+    <div class="host" x-show="currentHost">
+      <div class="avatar" :style="getAvatar(currentHost)"></div>
+      <div class="name" x-text="currentHost && currentHost.displayName"></div>
+    </div>
+    <div class="action">
+      <button @click="back()" class="secondary">Back</button>
+      <button :disabled="!currentHost" @click="next()" class="primary">Continue</button>
+    </div>
   </main>
   <main x-show="page === 'photo'">
     <h1>Take a photo</h1>
