@@ -92,6 +92,7 @@ const dataModel = {
   selectHost(host) {
     this.currentHost = host;
     this.hostSearch = '';
+    this.searchStatus = '';
     this.foundHosts = [];
   },
 
