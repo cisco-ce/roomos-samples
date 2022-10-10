@@ -194,6 +194,11 @@ const dataModel = {
   },
 
   takePhoto() {
+    // user has navigated away, skip
+    if (this.page !== 'photo') {
+      return;
+    }
+
     document.querySelector('#shutter-sound').play();
     document.querySelector('.photo-flash').classList.add('blink');
 
