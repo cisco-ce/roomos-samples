@@ -1,8 +1,10 @@
 # TODO
 
-- Sign out: use email
-- go home after timeout on last page
+- Sign out: check if email has actually checked in, error msg if not
 - Send card instead of message to host (create smaller photo)
+- ... and show this card as confirmation page
+
+- Go home after timeout on last page
 - Also send message to a common space
 - Translate to french too?
 
