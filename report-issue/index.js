@@ -1,4 +1,5 @@
 const dataModel = {
+  theme: 'disney',
   step: 'start',
   answers: {
     comments: '',
@@ -6,6 +7,8 @@ const dataModel = {
   },
 
   init() {
+    const params = new URLSearchParams(location.search);
+    this.theme = params.get('theme') || '';
   },
 
   answer(step, choice) {

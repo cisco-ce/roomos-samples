@@ -21,6 +21,24 @@ body {
   justify-content: center;
 }
 
+main {
+  display: flex;
+  gap: 4em;
+  align-items: flex-start;
+}
+
+.logo {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.disney .logo {
+  width: 40vh;
+  height: 40vh;
+  background-image: url('./assets/disney.png');
+}
+
 h1 {
   text-align: center;
   margin-bottom: 2em;

@@ -1,0 +1,12 @@
+<Extensions>
+  <Version>1.9</Version>
+  <Panel>
+    <Order>1</Order>
+    <PanelId>report_issue</PanelId>
+    <Location>HomeScreen</Location>
+    <Icon>Language</Icon>
+    <Color>#1170CF</Color>
+    <Name>Report Issue</Name>
+    <ActivityType>Custom</ActivityType>
+  </Panel>
+</Extensions>
