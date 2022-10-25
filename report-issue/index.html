@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="index.js" defer></script>
+  <script src="alpine.js" defer></script>
+
+  <title>Report Issue</title>
+  <link rel="icon" href="./assets/logo.png">
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body x-data="dataModel" x-cloak>
+
+  <section x-show="step === 'start'">
+    <h1>How was your experience?</h1>
+    <div class="choices">
+      <button class="choice" @click="answer(step, 'awesome')">🎉Awesome!</button>
+      <button class="choice" @click="answer(step, 'ok')">😐 OK</button>
+      <button class="choice" @click="answer(step, 'notgood')">😡 Not good</button>
+    </div>
+  </section>
+  <section x-show="step === 'whatwaswrong'">
+    <h1>Sorry to hear that! What went wrong?</h1>
+    <div class="choices">
+      <button class="choice" @click="answer(step, 'audiovideo')">📺 Audio / video quality</button>
+      <button class="choice" @click="answer(step, 'room')">🏢 Something in the room</button>
+      <button class="choice" @click="answer(step, 'other')">❓ Other</button>
+    </div>
+  </section>
+  <section x-show="step === 'moreinfo'">
+    <div>
+      <textarea x-model="answers.comments" placeholder="Your comments (optional)"></textarea>
+    </div>
+    <div>
+      <input class="name" x-model="answers.name" placeholder="Your name (optional)" />
+    </div>
+    <button @click="submit()" class="submit">Send</button>
+  </section>
+  <section x-show="step === 'done'">
+    <h1>Ok! Thanks for your feedback!</h1>
+  </section>
+</body>
+
+</html>

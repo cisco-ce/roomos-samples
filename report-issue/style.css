@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+}
+
+/* avoids alpine.js load blinking */
+[x-cloak] { display: none !important; }
+
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 25px;
+}
+
+body {
+  font-family: arial;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2em;
+  font-size: 1em;
+}
+
+button {
+  cursor: pointer;
+  font-size: inherit;
+  text-align: left;
+}
+
+button {
+  border: 1px solid black;
+  border-radius: 1em;
+  padding: 0.5em 1em;
+  background: transparent;
+}
+
+section {
+  text-align: center;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-bottom: 2em;
+}
+
+textarea, input {
+  font-size: inherit;
+  padding: 0.5em;
+  border: 1px solid black;
+  border-radius: 1em;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+:focus {
+  outline: 0;
+}
+
+textarea {
+  height: 7em;
+}
+
+button.submit {
+  background-color: black;
+  color: white;
+  /* hack: we move everything up, so keyboard doesnt cover the input (bug) */
+  margin-bottom: 6em;
+}
