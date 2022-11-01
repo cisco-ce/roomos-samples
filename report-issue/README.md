@@ -26,12 +26,10 @@ Provide the name of the room too, as well as metrics from the call
 
 For web dialog, provide a couple of different brandings (Disney logo!)
 
-# Survey now
+## Setting up service now
 
-Your instance URL: https://dev70811.service-now.com
+Create a development user
 
-Username: admin
-Current password: MtqfQu6R!Y+3
 
 
 ## TODO
