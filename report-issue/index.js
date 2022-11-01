@@ -8,6 +8,7 @@ const dataModel = {
   createIncident: false,
   incidentNumber: false,
   roomName: 'Unknown room',
+  showQr: false,
 
   init() {
     const params = new URLSearchParams(location.search);
@@ -16,6 +17,12 @@ const dataModel = {
     this.theme = params.get('theme') || '';
     this.roomName = params.get('roomname');
     this.device = params.get('device');
+    this.createQrCode();
+  },
+
+  createQrCode() {
+    const url = location.href;
+    new QRCode(document.getElementById("qr-code"), url);
   },
 
   answer(step, choice) {

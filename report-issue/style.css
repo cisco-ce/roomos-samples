@@ -97,6 +97,44 @@ button.submit {
   color: #a22323;
 }
 
+footer {
+  position: absolute;
+  bottom: 1em;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-dialog {
+  position: absolute;
+  top: calc(50% - 200px);
+  left: calc(50% - 200px);
+  width: 400px;
+  height: 400px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 2em;
+}
+
+#qr-code {
+}
+
+.qr-logo {
+  width: 2em;
+  height: 2em;
+}
+
+a {
+  text-decoration: underline;
+}
+
 /* modifications for mobile / slim displays */
 @media (max-width: 600px) {
   main {
@@ -104,6 +142,9 @@ button.submit {
     flex-direction: column;
     gap: 0;
     align-items: center;
+  }
+  footer {
+    display: none;
   }
 }
 

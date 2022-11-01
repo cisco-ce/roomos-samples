@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.js" defer></script>
   <script src="servicenow.js" defer></script>
   <script src="index.js" defer></script>
   <script src="alpine.js" defer></script>
@@ -58,7 +59,13 @@
       <h1 x-show="!createIncident">Thanks for your feedback!</h1>
     </section>
   </main>
-
+  <div class="qr-dialog" x-show="showQr" @click="showQr = false">
+    <div id="qr-code"></div>
+  </div>
+  <footer>
+    <a @click="showQr = true">Report with smart phone instead</a>
+    <img src="./assets/qrlogo.png" class="qr-logo"/>
+  </footer>
 </body>
 
 </html>
