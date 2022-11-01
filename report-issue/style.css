@@ -96,3 +96,15 @@ button.submit {
 .error {
   color: #a22323;
 }
+
+/* modifications for mobile / slim displays */
+@media (max-width: 600px) {
+  main {
+    font-size: 18px;
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+  }
+}
+
+
