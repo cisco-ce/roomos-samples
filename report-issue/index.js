@@ -15,6 +15,7 @@ const dataModel = {
     this.step = askRating ? 'start' : 'whatwaswrong';
     this.theme = params.get('theme') || '';
     this.roomName = params.get('roomname');
+    this.device = params.get('device');
   },
 
   answer(step, choice) {
@@ -34,9 +35,9 @@ const dataModel = {
 
   async submit() {
     const { whatwaswrong, comments, name } = this.answers;
-    const { roomName } = this;
+    const { roomName, device } = this;
     this.createIncident = true;
-    this.incidentNumber = await createReport(whatwaswrong, comments, name, roomName);
+    this.incidentNumber = await createReport(whatwaswrong, comments, name, roomName, device);
     console.log('created', this.incidentNumber);
     this.step = 'done';
   },
