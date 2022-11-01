@@ -92,3 +92,7 @@ button.submit {
   /* hack: we move everything up, so keyboard doesnt cover the input (bug) */
   margin-bottom: 6em;
 }
+
+.error {
+  color: #a22323;
+}
