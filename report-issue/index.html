@@ -47,12 +47,14 @@
     </section>
     <section x-show="step === 'done'">
       <div class="error" x-show="createIncident && !incidentNumber">Sorry! something went wrong when creating a ServiceNow incident.</div>
+
       <div x-show="incidentNumber">
         <h1>Ok! Thanks for your feedback!</h1>
         <div x-show="createIncident">A ServiceNow incident was created.
           <p/>Incident number: <b x-text="incidentNumber"></b>
         </div>
       </div>
+
       <h1 x-show="!createIncident">Thanks for your feedback!</h1>
     </section>
   </main>

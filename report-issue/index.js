@@ -22,7 +22,6 @@ const dataModel = {
     if (step === 'start') {
       if (choice === 'notgood') {
         this.step = 'whatwaswrong';
-        this.createIncident = true;
       }
       else {
         this.step = 'done';
@@ -36,7 +35,9 @@ const dataModel = {
   async submit() {
     const { whatwaswrong, comments, name } = this.answers;
     const { roomName } = this;
+    this.createIncident = true;
     this.incidentNumber = await createReport(whatwaswrong, comments, name, roomName);
+    console.log('created', this.incidentNumber);
     this.step = 'done';
   },
 }
