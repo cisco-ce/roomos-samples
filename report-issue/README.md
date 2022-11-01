@@ -66,4 +66,6 @@ The macro is required for several reasons:
 * Enable the macro
 * Tap the `Report Issue` button on your Navigator home screen
 
+## Support
 
+Contact Tore Bjolseth at Cisco (Collaboration Technology Group, Norway).
