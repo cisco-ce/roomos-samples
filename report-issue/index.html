@@ -35,6 +35,9 @@
     </section>
     <section x-show="step === 'moreinfo'">
       <div>
+        <input :value="roomName" placeholder="(Unknown room)" disabled />
+      </div>
+      <div>
         <textarea x-model="answers.comments" placeholder="Your comments (optional)"></textarea>
       </div>
       <div>

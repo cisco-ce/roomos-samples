@@ -7,12 +7,14 @@ const dataModel = {
   },
   createIncident: false,
   incidentNumber: false,
+  roomName: 'Unknown room',
 
   init() {
     const params = new URLSearchParams(location.search);
     const askRating = params.get('askrating');
     this.step = askRating ? 'start' : 'whatwaswrong';
     this.theme = params.get('theme') || '';
+    this.roomName = params.get('roomname');
   },
 
   answer(step, choice) {
@@ -33,7 +35,8 @@ const dataModel = {
 
   async submit() {
     const { whatwaswrong, comments, name } = this.answers;
-    this.incidentNumber = await createReport(whatwaswrong, comments, name);
+    const { roomName } = this;
+    this.incidentNumber = await createReport(whatwaswrong, comments, name, roomName);
     this.step = 'done';
   },
 }

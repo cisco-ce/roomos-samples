@@ -11,16 +11,15 @@ function basicAuth(user, password) {
 }
 
 // Prepares the incident report
-async function createReport(issueCategory, comment, person) {
+async function createReport(issueCategory, comment, person, room) {
 
+  const title = issueCategory + ' / ' + room;
   const incident = {
     assignment_group: 'MeetingRoom',
-    short_description: issueCategory,
+    short_description: title,
     urgency: '2',
     impact: '2',
-    description: `User Comment: ${comment}
-      User Name: ${person}
-    `,
+    description: `User Comment: ${comment} \nUser Name: ${person} \nRoom: ${room}`,
   };
 
   const { instance, username, password } = servicenow;
