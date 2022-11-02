@@ -42,6 +42,12 @@ const dataModel = {
     }
   },
 
+  back() {
+    if (this.step === 'moreinfo') {
+      this.step = 'whatwaswrong';
+    }
+  },
+
   async submit() {
     const { whatwaswrong, comments, name } = this.answers;
     const { roomName, device } = this;
