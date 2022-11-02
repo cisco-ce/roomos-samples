@@ -93,6 +93,10 @@ button.submit {
   margin-bottom: 6em;
 }
 
+:disabled {
+  opacity: 0.5;
+}
+
 .error {
   color: #a22323;
 }

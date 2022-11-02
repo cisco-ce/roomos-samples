@@ -10,6 +10,7 @@ const dataModel = {
   incidentNumber: false,
   roomName: 'Unknown room',
   showQr: false,
+  busy: false,
 
   init() {
     const params = new URLSearchParams(location.search);
@@ -45,7 +46,9 @@ const dataModel = {
     const { whatwaswrong, comments, name } = this.answers;
     const { roomName, device } = this;
     this.createIncident = true;
+    this.busy = true;
     this.incidentNumber = await createReport(whatwaswrong, comments, name, roomName, device);
+    this.busy = false;
     console.log('created', this.incidentNumber);
     this.step = 'done';
     this.notifyWithWebex(this.incidentNumber, whatwaswrong, comments, name, roomName, device);
