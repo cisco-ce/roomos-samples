@@ -18,7 +18,7 @@
 
 <body x-data="dataModel" :class="theme || ''" x-cloak>
   <main>
-    <div class="logo"></div>
+    <section class="logo"></section>
     <section x-show="step === 'start'">
       <h1>How was your experience?</h1>
       <div class="choices">
@@ -30,37 +30,45 @@
     <section x-show="step === 'whatwaswrong'">
       <h1>What went wrong?</h1>
       <div class="choices">
-        <button class="choice" @click="answer(step, 'audiovideo')">📺 Audio / video quality</button>
-        <button class="choice" @click="answer(step, 'room')">🏢 Something in the room</button>
-        <button class="choice" @click="answer(step, 'other')">❓ Other</button>
+        <button
+          class="choice icon audio"
+          @click="answer(step, 'audiovideo')"
+        >Audio / video quality</button>
+        <button
+          class="choice icon room"
+          @click="answer(step, 'room')"
+        >Something in the room</button>
+        <button
+          class="choice icon other"
+          @click="answer(step, 'other')"
+        >Other</button>
       </div>
     </section>
     <section x-show="step === 'moreinfo'">
       <div>
-        <input :value="roomName" placeholder="(Unknown room)" disabled />
+        <textarea x-model="answers.comments" placeholder="Describe the problem"></textarea>
       </div>
       <div>
-        <textarea x-model="answers.comments" placeholder="Your comments (optional)"></textarea>
-      </div>
-      <div>
-        <input class="name" x-model="answers.name" placeholder="Your name (optional)" />
+        <input class="name" x-model="answers.name" placeholder="Your name here" />
       </div>
       <div>
         <button @click="back" x-show="step === 'moreinfo'">Back</button>
         <button
           @click="submit()"
           :disabled="busy"
-          x-text="busy ? 'Submitting' : 'Submit'"
+          x-text="busy ? 'Sending' : 'Send'"
           class="submit"
         ></button>
       </div>
     </section>
     <section x-show="step === 'done'">
-      <div class="error" x-show="createIncident && !incidentNumber">Sorry! something went wrong when creating a ServiceNow incident.</div>
+      <div class="error" x-show="createIncident && !incidentNumber">Sorry! Something went wrong when creating a ServiceNow incident.</div>
 
       <div x-show="incidentNumber">
-        <h1>Ok! Thanks for your feedback!</h1>
-        <div x-show="createIncident">A ServiceNow incident was created.
+        <div class="done"></div>
+        <h1>Issue reported</h1>
+        <div x-show="createIncident">Thanks for your feedback.
+          <p/>A ServiceNow incident has been created.
           <p/>Incident number: <b x-text="incidentNumber"></b>
         </div>
       </div>
@@ -70,10 +78,11 @@
   </main>
   <div class="qr-dialog" x-show="showQr" @click="showQr = false">
     <div id="qr-code"></div>
+    <div>Tap to close</div>
   </div>
   <footer>
-    <a @click="showQr = true">Report with smart phone instead</a>
     <img src="./assets/qrlogo.png" class="qr-logo"/>
+    <a @click="showQr = true">Report with phone instead</a>
   </footer>
 </body>
 

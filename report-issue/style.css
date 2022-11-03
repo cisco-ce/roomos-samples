@@ -1,3 +1,17 @@
+:root {
+  --border-radius: 30px;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('./assets/AvenirLTStd-Book.otf');
+}
+
+@font-face {
+  font-family: 'AvenirBold';
+  src: url('./assets/AvenirLTStd-Black.otf');
+}
+
 * {
   box-sizing: border-box;
 }
@@ -19,47 +33,55 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: Avenir;
 }
 
 main {
+  width: 100%;
   display: flex;
-  gap: 4em;
-  align-items: flex-start;
+  gap: 1em;
+  padding: 1em;
+}
+
+section {
+  width: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .logo {
-  background-size: contain;
+  min-height: 350px;
+  background-size: 350px auto;
   background-position: center;
   background-repeat: no-repeat;
+  display: none;
 }
 
 .disney .logo {
-  width: 40vh;
-  height: 40vh;
   background-image: url('./assets/disney.png');
+  display: flex;
 }
 
 h1 {
-  text-align: center;
-  margin-bottom: 2em;
-  font-size: 1em;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+  font-family: AvenirBold;
 }
 
 button {
   cursor: pointer;
   font-size: inherit;
   text-align: left;
+  transition: all 0.2s;
 }
 
 button {
   border: 1px solid black;
-  border-radius: 1em;
+  border-radius: var(--border-radius);
   padding: 0.5em 1em;
   background: transparent;
-}
-
-section {
-  text-align: center;
 }
 
 .choices {
@@ -73,13 +95,22 @@ textarea, input {
   font-size: inherit;
   padding: 0.5em;
   border: 1px solid black;
-  border-radius: 1em;
+  border-radius: 10px;
   width: 100%;
   margin-bottom: 1em;
+  width: 70%;
+}
+
+textarea:focus, input:focus {
+  background-color: #eee;
 }
 
 :focus {
   outline: 0;
+}
+
+button, textarea, input {
+  font-family: inherit;
 }
 
 textarea {
@@ -89,8 +120,41 @@ textarea {
 button.submit {
   background-color: black;
   color: white;
-  /* hack: we move everything up, so keyboard doesnt cover the input (bug) */
-  margin-bottom: 6em;
+}
+
+button.submit:hover {
+  background-color: #222;
+}
+
+button.submit:active {
+  background-color: #333;
+}
+
+button.icon {
+  background-position: 25px center;
+  background-repeat: no-repeat;
+  padding-left: 70px;
+  width: 370px;
+}
+
+button.room {
+  background-image: url('./assets/room.png');
+}
+
+button.other {
+  background-image: url('./assets/other.png');
+}
+
+button.audio {
+  background-image: url('./assets/audio.png');
+}
+
+button:hover {
+  background-color: #eee;
+}
+
+button:active {
+  background-color: #ddd;
 }
 
 :disabled {
@@ -103,7 +167,7 @@ button.submit {
 
 footer {
   position: absolute;
-  bottom: 1em;
+  bottom: 2em;
   left: 0;
   width: 100%;
   text-align: center;
@@ -121,13 +185,16 @@ footer {
   height: 400px;
   background: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
+  border: 1px solid #999;
   border-radius: 2em;
+  box-shadow: 5px 5px 5px #0003;
 }
 
 #qr-code {
+  margin: 1em 0;
 }
 
 .qr-logo {
@@ -135,17 +202,45 @@ footer {
   height: 2em;
 }
 
-a {
+a:hover, a:active {
+  cursor: pointer;
   text-decoration: underline;
+}
+
+.done {
+  height: 30px;
+  background-image: url('./assets/done.png');
+  background-position: left center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 10px 0;
+}
+
+.name:focus {
+  /* hack because roomos doesnt properly scroll the viewport at the moment,
+  so input field is hidden behind keyboard */
+  margin-bottom: 7em;
 }
 
 /* modifications for mobile / slim displays */
 @media (max-width: 600px) {
+  body {
+    justify-content: unset;
+  }
   main {
     font-size: 18px;
     flex-direction: column;
     gap: 0;
-    align-items: center;
+    justify-content: unset;
+    align-items: flex-start;
+  }
+  .logo {
+    height: 200px;
+    background-size: contain;
+    min-height: unset;
+  }
+  section {
+    width: 100%;
   }
   footer {
     display: none;
