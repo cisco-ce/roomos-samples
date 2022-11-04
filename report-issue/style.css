@@ -146,6 +146,7 @@ button.other {
 }
 
 button.audio {
+  background-position: 20px center;
   background-image: url('./assets/audio.png');
 }
 
