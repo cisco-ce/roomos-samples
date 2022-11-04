@@ -127,6 +127,27 @@ textarea {
 button.submit {
   background-color: black;
   color: white;
+  position: relative;
+}
+
+button.submit.busy {
+  padding-left: 50px;
+}
+
+button.submit.busy::after {
+  content: "";
+  position: absolute;
+  background-image: url('./assets/loader.png');
+  background-size: contain;
+  top: 10px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
 }
 
 button.submit:hover {

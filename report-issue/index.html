@@ -65,8 +65,9 @@
         <button @click="back" x-show="step === 'moreinfo'">Back</button>
         <button
           @click="submit()"
+          :class="busy ? 'busy' : ''"
           :disabled="busy"
-          x-text="busy ? 'Sending' : 'Send'"
+          x-text="busy ? 'Send' : 'Send'"
           class="submit"
         ></button>
       </div>
