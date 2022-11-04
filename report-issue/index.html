@@ -18,7 +18,7 @@
 
 <body x-data="dataModel" :class="theme || ''" x-cloak>
   <main>
-    <section class="logo"></section>
+    <div class="logo left"></div>
     <section x-show="step === 'start'">
       <h1>How was your experience?</h1>
       <div class="choices">
@@ -27,24 +27,34 @@
         <button class="choice" @click="answer(step, 'notgood')">😡 Not good</button>
       </div>
     </section>
-    <section x-show="step === 'whatwaswrong'">
-      <h1>What went wrong?</h1>
-      <div class="choices">
-        <button
-          class="choice icon audio"
-          @click="answer(step, 'audiovideo')"
-        >Audio / video quality</button>
-        <button
-          class="choice icon room"
-          @click="answer(step, 'room')"
-        >Something in the room</button>
-        <button
-          class="choice icon other"
-          @click="answer(step, 'other')"
-        >Other</button>
+    <section
+      x-show="step === 'whatwaswrong'"
+      x-transition:leave="fadeup"
+      x-transition:enter="fadein"
+    >
+      <div>
+        <h1>What went wrong?</h1>
+        <div class="choices">
+          <button
+            class="choice icon audio"
+            @click="answer(step, 'audiovideo')"
+          >Audio / video quality</button>
+          <button
+            class="choice icon room"
+            @click="answer(step, 'room')"
+          >Something in the room</button>
+          <button
+            class="choice icon other"
+            @click="answer(step, 'other')"
+          >Other</button>
+        </div>
       </div>
     </section>
-    <section x-show="step === 'moreinfo'">
+    <section
+      x-show="step === 'moreinfo'"
+      x-transition:enter="fadein"
+      x-transition:leave="fadeup"
+    >
       <div>
         <textarea x-model="answers.comments" placeholder="Describe the problem"></textarea>
       </div>
@@ -61,7 +71,11 @@
         ></button>
       </div>
     </section>
-    <section x-show="step === 'done'">
+    <section
+      x-show="step === 'done'"
+      x-transition:leave="fadeup"
+      x-transition:enter="fadein"
+    >
       <div class="error" x-show="createIncident && !incidentNumber">Sorry! Something went wrong when creating a ServiceNow incident.</div>
 
       <div x-show="incidentNumber">
@@ -76,6 +90,7 @@
       <h1 x-show="!createIncident">Thanks for your feedback!</h1>
     </section>
   </main>
+
   <div class="qr-dialog" x-show="showQr" @click="showQr = false">
     <div id="qr-code"></div>
     <div>Tap to close</div>

@@ -38,21 +38,29 @@ body {
 
 main {
   width: 100%;
-  display: flex;
-  gap: 1em;
-  padding: 1em;
+  height: 100%;
+  position: relative;
 }
 
 section {
-  width: 0;
-  flex-grow: 1;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 50%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
+
 .logo {
-  min-height: 350px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
   background-size: 350px auto;
   background-position: center;
   background-repeat: no-repeat;
@@ -96,9 +104,8 @@ textarea, input {
   padding: 0.5em;
   border: 1px solid black;
   border-radius: 10px;
-  width: 100%;
+  width: 35vw;
   margin-bottom: 1em;
-  width: 70%;
 }
 
 textarea:focus, input:focus {
@@ -223,25 +230,63 @@ a:hover, a:active {
   margin-bottom: 7em;
 }
 
+.fadeup {
+  animation: 0.3s fadeup forwards;
+}
+
+.fadein {
+  animation-name: fadein;
+  animation-duration: 0.4s;
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeup {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /* modifications for mobile / slim displays */
 @media (max-width: 600px) {
   body {
-    justify-content: unset;
+    flex-direction: column;
+    justify-content: flex-start;
   }
   main {
-    font-size: 18px;
-    flex-direction: column;
-    gap: 0;
-    justify-content: unset;
-    align-items: flex-start;
+    height: unset;
   }
   .logo {
-    height: 200px;
     background-size: contain;
-    min-height: unset;
+    height: 100px;
+    background-position: center center;
+    width: 100%;
+  }
+  input, textarea {
+    width: 100%;
+  }
+  .logo, section {
+    position: relative;
+    width: 100%;
+    left: unset;
   }
   section {
-    width: 100%;
+    height: unset;
+    padding: 1em;
   }
   footer {
     display: none;
