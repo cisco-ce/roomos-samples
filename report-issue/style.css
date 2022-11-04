@@ -315,3 +315,36 @@ a:hover, a:active {
 }
 
 
+
+
+body.disney2 {
+  background-image: url('./assets/disneycastle.jpeg');
+  background-size: cover;
+  background-position: center center;
+}
+
+.disney2 section {
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.disney2 button {
+  background-image: none;
+  background-color: #0009;
+  color: white;
+}
+
+.disney2 h1 {
+  color: white;
+  text-shadow: 1px 1px black;
+}
+
+.disney2 footer {
+  color: white;
+}
+
+.disney2 textarea, .disney2 input {
+  background-color: #0009;
+  color: white;
+}
