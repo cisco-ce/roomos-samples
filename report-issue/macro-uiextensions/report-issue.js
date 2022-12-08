@@ -7,7 +7,7 @@ const serviceNowPassword = '';
 
 // this will be added as css class to the body element of the web page
 // allows you to customize the look and feel of the web dialog
-const theme = '';
+const theme = 'disney';
 
 // Bot token to send webex message when creating issue, create a bot user at developer.webex.com
 const botToken = '';
