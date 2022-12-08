@@ -1,11 +1,9 @@
 import xapi from 'xapi';
 
 // You can quickly create a developer instance at developer.service-now.com
-const serviceNow = {
-  instance: '',
-  username: 'admin',
-  password: '',
-};
+const serviceNowInstance = '';
+const serviceNowUsername = 'admin';
+const serviceNowPassword = '';
 
 // this will be added as css class to the body element of the web page
 // allows you to customize the look and feel of the web dialog
@@ -33,9 +31,9 @@ async function getUrl() {
   const device = await getSystemInfo();
 
   let url = surveyUrl;
-  url += `?i=${serviceNow.instance}`;
-  url += `&u=${serviceNow.username}`;
-  url += `&p=${serviceNow.password}`;
+  url += `?i=${serviceNowInstance}`;
+  url += `&u=${serviceNowUsername}`;
+  url += `&p=${serviceNowPassword}`;
   url += `&theme=${theme}`;
   url += `&roomname=${room}`;
   url += `&device=${device}`;
