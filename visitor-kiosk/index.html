@@ -124,10 +124,13 @@
   </main>
   <main x-show="page === 'registered'">
     <h1>Welcome <span x-text="name"></span></h1>
-    <div>We sent a message to
+    <div>Your badge is printing. Please wear it during your stay.
+    <p/>
+    We sent a message to
       <span x-text="currentHost && currentHost.displayName"></span>
       that you have arrived.
-    <p/>Grab a coffee or have yourself a drink while you wait.</div>
+    <p/>
+    Grab a coffee or have yourself a drink while you wait.</div>
     <form class="registered" @submit.prevent="">
       <button @click="home()" class="primary">OK</button>
     </form>
