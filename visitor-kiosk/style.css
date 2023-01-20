@@ -60,6 +60,12 @@ h2 {
   margin: 0;
 }
 
+.logo {
+  width: 5em;
+  height: 3em;
+  background: center/contain url('./assets/cisco-logo.png') no-repeat;
+}
+
 .time {
   font-size: 1.5em;
 }

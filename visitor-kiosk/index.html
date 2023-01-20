@@ -11,7 +11,7 @@
   <script src="alpine.js" defer></script>
   <!-- <script src="https://unpkg.com/alpinejs@3.9.1/dist/cdn.min.js" defer></script> -->
 
-  <title>Webex Visitor Kiosk</title>
+  <title>Cisco Visitor Kiosk</title>
 
   <link rel="icon" href="./assets/logo.png">
   <link href="style.css" rel="stylesheet">
@@ -19,7 +19,7 @@
 
 <body x-data="dataModel" x-cloak>
   <header>
-    <h2 @click="location.reload()">Simplify</h2>
+    <div @click="location.reload()" class="logo"></div>
     <div class="time-date">
       <div class="date" x-text="date"></div>
       <div class="time" x-text="time"></div>
