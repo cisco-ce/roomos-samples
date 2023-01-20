@@ -32,9 +32,13 @@
       <div class="action">
         <button @click="checkOut()" class="secondary">Check out</button>
         <button @click="next()" class="primary">Check in</button>
-        <button @click="call()" class="secondary">Call receptionist</button>
       </div>
     </form>
+    <div class="mini-apps">
+      <button @click="call()">Call Reception</button>
+      <button @click="page = 'taxi'">Taxi</button>
+      <button @click="page = 'map'">Map</button>
+    </div>
   </main>
   <main x-show="page === 'checkIn'">
     <h1>Check in</h1>
@@ -141,13 +145,58 @@
       </div>
     </form>
   </main>
+  <main x-show="page === 'taxi'">
+    <h1>Call Taxi</h1>
+    <div>Enter your phone number, so the taxi can call you when it arrives.</div>
+    <form @submit.prevent="">
+      <div>
+        <input
+          placeholder="Your phone number"
+          x-model="phoneNumber"
+          @keydown.enter.prevent="if (validForm) next()"
+        />
+      </div>
+      <div class="action">
+        <button @click="home()" class="secondary">Back</button>
+        <button @click="next()" :disabled="!validForm" class="primary">Continue</button>
+      </div>
+    </form>
+  </main>
+  <main x-show="page === 'taxiConfirmed'">
+    <h1>Taxi ordered</h1>
+    <div>It will call your phone when it arrives.</div>
+    <div>
+      Taxi number: <span x-text="taxiNumber"></span>
+    </div>
+    <div class="action">
+      <button @click="home()" class="primary">Done</button>
+    </div>
+  </main>
   <main x-show="page === 'checkOutResult'">
     <h1>Checked out</h1>
     <div>You were checked out. See you soon!</div>
     <div class="action">
       <button @click="home()" :disabled="!validForm" class="primary">Continue</button>
     </div>
-</main>
+  </main>
+  <main x-show="page === 'map'">
+    <h1>Area map</h1>
+    <iframe
+      :src="mapUrl"
+      width="600"
+      height="450"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+
+    <div class="action">
+      <button @click="home()" class="primary">Done</button>
+    </div>
+  </main>
+
+
 </body>
 
 </html>

@@ -21,10 +21,14 @@ const dataModel = {
   photoTimer: 0,
   photoTime: 0,
   videoStream: null,
+  phoneNumber: '',
+  taxiNumber: '',
+  mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37964.479957946394!2d-121.95893677399364!3d37.41713987799405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fc911562d481f%3A0xd3d896b473be003!2sCisco%20Systems%20Building%2012!5e0!3m2!1sen!2sno!4v1674211511880!5m2!1sen!2sno',
 
   init() {
     this.updateTimeAndDate();
     setInterval(() => this.updateTimeAndDate(), 30 * 1000);
+    this.mapUrl = new URLSearchParams(location.search).get('map') || this.mapUrl;
     // this.showPhotoPage();
   },
 
@@ -40,12 +44,13 @@ const dataModel = {
     this.foundHosts = [];
     this.searchStatus = '';
     this.photo = null;
+    this.phoneNumber = '';
     clearInterval(this.photoTimer);
   },
 
   call() {
     const defaultNumber = 'erica.talking@ivr.vc';
-    const number = URLSearchParams(location.search).get('reception') || defaultNumber;
+    const number = new URLSearchParams(location.search).get('reception') || defaultNumber;
     location.href = `sip:${number}`;
   },
 
@@ -56,6 +61,9 @@ const dataModel = {
     }
     else if (this.page === 'checkOut') {
       return this.email.match(emailPattern);
+    }
+    else if (this.page === 'taxi') {
+      return this.phoneNumber.length > 3;
     }
     return true;
   },
@@ -138,6 +146,11 @@ const dataModel = {
     else if (page === 'checkOut') {
       this.page = 'checkOutResult';
     }
+    else if (page === 'taxi') {
+      this.taxiNumber = Math.ceil(Math.random() * 10000);
+      this.page = 'taxiConfirmed';
+    }
+
     else {
       console.error('unknown next page');
     }

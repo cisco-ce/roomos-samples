@@ -196,6 +196,18 @@ form {
   animation-duration: 0.3s;
 }
 
+.mini-apps {
+  display: flex;
+  justify-content: center;
+}
+
+.mini-apps button {
+  border: 0;
+  font-size: 0.8em;
+  color: #666;
+  margin: 0;
+}
+
 @keyframes flash {
   0% {
     background-color: #fff0;
