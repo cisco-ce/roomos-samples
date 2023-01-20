@@ -43,6 +43,12 @@ const dataModel = {
     clearInterval(this.photoTimer);
   },
 
+  call() {
+    const defaultNumber = 'erica.talking@ivr.vc';
+    const number = URLSearchParams(location.search).get('reception') || defaultNumber;
+    location.href = `sip:${number}`;
+  },
+
   get validForm() {
     const emailPattern = /\w+@\w+/;
     if (this.page === 'checkIn') {
