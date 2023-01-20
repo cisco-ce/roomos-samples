@@ -29,7 +29,12 @@ const dataModel = {
     this.updateTimeAndDate();
     setInterval(() => this.updateTimeAndDate(), 30 * 1000);
     this.mapUrl = new URLSearchParams(location.search).get('map') || this.mapUrl;
+
+    // quick jump to photo page for dev:
     // this.showPhotoPage();
+    // this.name = 'Tore Bjolseth';
+    // this.email = 'tbjolset@cisco.com';
+    // this.currentHost = { displayName: 'Anna Gjerlaug' };
   },
 
   home() {
@@ -294,6 +299,14 @@ const dataModel = {
     const now = new Date();
     this.date = now.format('mmmm d, yyyy');
     this.time = now.format('HH:MM');
+  },
+
+  // create img data url from blob
+  photoSrc() {
+    if (!this.photo) return;
+    const url = window.URL.createObjectURL(this.photo);
+    console.log('created', url);
+    return url;
   }
 };
 

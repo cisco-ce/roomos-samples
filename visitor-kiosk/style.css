@@ -125,16 +125,6 @@ form {
   border-radius: 10px;
 }
 
-.table {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 1em 0;
-}
-
-.table .key {
-  font-style: italic;
-}
-
 .host {
   display: flex;
   align-items: center;
@@ -206,6 +196,42 @@ form {
   font-size: 0.8em;
   color: #666;
   margin: 0;
+}
+
+.business-card {
+  position: relative;
+  padding: 1em;
+  padding-left: 7em;
+  border-radius: 5px;
+  box-shadow:0 0 13px #0004;
+  font-size: 0.6em;
+  min-height: 9em;
+  margin-bottom: 2em;
+}
+
+.business-card .photo {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  width: 5em;
+  height: 5em;
+  border-radius: 5em;
+  object-fit: cover;
+  background: #9f9c9c;
+  border: 0;
+}
+
+.business-card .name {
+  font-size: 2em;
+  margin-bottom: 0.3em;
+}
+
+.business-card .email {
+  font-size: 0.8em;
+}
+
+.business-card .visiting {
+  margin-top: 2em;
 }
 
 @keyframes flash {

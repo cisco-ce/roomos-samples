@@ -107,19 +107,19 @@
     <audio src="assets/shutter.mp3" id="shutter-sound"></audio>
   </main>
   <main x-show="page === 'confirm'">
-    <h1>Confirm</h1>
-    <div>Confirm your details</div>
-    <div class="table">
-      <div class="key">Name:</div>
-      <div class="value" x-text="name"></div>
-      <div class="key">Email:</div>
-      <div class="value" x-text="email"></div>
-      <div class="key">Visiting</div>
-      <div class="value" x-text="currentHost && currentHost.displayName"></div>
+    <h1>Confirm details</h1>
+
+    <div class="business-card">
+      <img class="photo" :src="photoSrc()" />
+      <div class="name" x-text="name"></div>
+      <div class="email" x-text="email"></div>
+      <div class="visiting">Visiting:
+        <span x-text="currentHost && currentHost.displayName"></span>
+      </div>
     </div>
     <div class="action">
       <button @click="back()" class="secondary">Back</button>
-      <button @click="next()" :disabled="!validForm" class="primary">Continue</button>
+      <button @click="next()" :disabled="!validForm" class="primary">Register</button>
     </div>
   </main>
   <main x-show="page === 'registered'">
