@@ -101,6 +101,9 @@ const dataModel = {
     const email = this.currentHost.emails[0];
     const token = this.getToken();
 
+    if (!token) {
+      return;
+    }
     sendMessage(token, email, msg, this.photo)
       .catch(e => {
         console.warn(e);
@@ -258,10 +261,6 @@ const dataModel = {
     const word = this.hostSearch.trim();
 
     const token = this.getToken();
-    if (!token) {
-      alert('Kiosk does not have bot token to search for people');
-      return;
-    }
 
     if (word.length > 2) {
       this.searchStatus = 'Searching...';

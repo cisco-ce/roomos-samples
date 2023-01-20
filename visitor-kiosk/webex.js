@@ -42,8 +42,23 @@ function sendMessage(token, toPersonEmail, markdown, file) {
   return fetch(webexMsgUrl, options);
 }
 
+function mockResult(keyword) {
+  const img = Math.ceil(Math.random() * 60);
+  return [
+    {
+      displayName: `${keyword} Johnson`,
+      avatar: `https://i.pravatar.cc/500?img=${img}`,
+      emails: [`${keyword}@acme.com`],
+    },
+  ];
+}
+
 async function searchPerson(keyword, token, callback) {
   if (!keyword) return;
+  if (!token) {
+    callback(mockResult(keyword));
+    return;
+  }
 
   currentSearchNumber++;
   const id = currentSearchNumber; // avoid closure
