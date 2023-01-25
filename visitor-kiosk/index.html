@@ -133,7 +133,9 @@
     <p/>
     Grab a coffee or have yourself a drink while you wait.</div>
     <form class="registered" @submit.prevent="">
-      <button @click="home()" class="primary">OK</button>
+      <div class="action">
+        <button @click="home()" class="primary">OK</button>
+      </div>
     </form>
   </main>
   <main x-show="page === 'checkOut'">
