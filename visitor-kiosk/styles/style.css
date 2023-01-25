@@ -248,6 +248,8 @@ button.map {
   font-size: 0.6em;
   min-height: 9em;
   margin-bottom: 2em;
+  background-color: white;
+  color: black;
 }
 
 .business-card .photo {

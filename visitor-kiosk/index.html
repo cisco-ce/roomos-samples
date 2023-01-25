@@ -9,16 +9,14 @@
   <script src="webex.js"></script>
   <script src="index.js" defer></script>
   <script src="alpine.js" defer></script>
-  <!-- <script src="https://unpkg.com/alpinejs@3.9.1/dist/cdn.min.js" defer></script> -->
 
   <title>Cisco Visitor Kiosk</title>
 
   <link rel="icon" href="./assets/logo.png">
   <link href="styles/style.css" rel="stylesheet">
-  <!-- <link href="styles/theme-night.css" rel="stylesheet"> -->
 </head>
 
-<body x-data="dataModel" x-cloak>
+<body x-data="dataModel" x-cloak :class="theme">
   <header>
     <div @click="location.reload()" class="logo"></div>
     <div class="time-date">

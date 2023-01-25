@@ -1,0 +1,54 @@
+body {
+  background-image: url('../assets/night.png');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+body.green {
+  background-image: url('../assets/green.png');
+}
+
+body.carbon {
+  background-image: url('../assets/carbon.png');
+}
+
+body.blue {
+  background-image: url('../assets/blue.jpeg');
+}
+
+.mini-apps button {
+  color: white;
+}
+
+.logo {
+  visibility: hidden;
+}
+
+.action button {
+  border: 2px solid #fff9;
+  color: white;
+  background: transparent;
+  border-radius: 84px;
+}
+
+.action button.primary {
+  color: black;
+  background: white;
+}
+
+.mini-apps button {
+  color: #fff9;
+}
+
+button.call {
+  background-image: url('../assets/concierge-white.png');
+}
+
+button.taxi {
+  background-image: url('../assets/taxi-white.png');
+}
+
+button.map {
+  background-image: url('../assets/map-white.png');
+}

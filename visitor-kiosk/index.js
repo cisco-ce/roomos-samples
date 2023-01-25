@@ -28,8 +28,17 @@ const dataModel = {
   init() {
     this.updateTimeAndDate();
     setInterval(() => this.updateTimeAndDate(), 30 * 1000);
-    this.mapUrl = new URLSearchParams(location.search).get('map') || this.mapUrl;
+    const params = new URLSearchParams(location.search);
+    this.mapUrl = params.get('map') || this.mapUrl;
+    this.theme = params.get('theme');
 
+    if (this.theme) {
+      // <link href="styles/theme-night.css" rel="stylesheet">
+      const head = document.getElementsByTagName("head")[0];
+      head.insertAdjacentHTML(
+        "beforeend",
+        `<link rel="stylesheet" href="styles/theme-cisco.css" />`);
+    }
     // quick jump to photo page for dev:
     // this.showPhotoPage();
     // this.name = 'Tore Bjolseth';
