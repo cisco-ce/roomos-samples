@@ -15,6 +15,7 @@
 
   <link rel="icon" href="./assets/logo.png">
   <link href="styles/style.css" rel="stylesheet">
+  <!-- <link href="styles/theme-night.css" rel="stylesheet"> -->
 </head>
 
 <body x-data="dataModel" x-cloak>
@@ -35,9 +36,9 @@
       </div>
     </form>
     <div class="mini-apps">
-      <button @click="call()">Call Reception</button>
-      <button @click="page = 'taxi'">Taxi</button>
-      <button @click="page = 'map'">Map</button>
+      <button class="call" @click="call()">Call Reception</button>
+      <button class="taxi" @click="page = 'taxi'">Taxi</button>
+      <button class="map" @click="page = 'map'">Map</button>
     </div>
   </main>
   <main x-show="page === 'checkIn'">
@@ -79,7 +80,7 @@
   </main>
   <main x-show="page === 'confirmHost'">
     <h1>Selected Host</h1>
-    <div class="host" x-show="currentHost">
+    <div class="selected-host" x-show="currentHost">
       <div class="avatar" :style="getAvatar(currentHost)"></div>
       <div class="name" x-text="currentHost && currentHost.displayName"></div>
     </div>
@@ -195,7 +196,7 @@
     ></iframe>
 
     <div class="action">
-      <button @click="home()" class="primary">Done</button>
+      <button @click="home()">Back</button>
     </div>
   </main>
 
