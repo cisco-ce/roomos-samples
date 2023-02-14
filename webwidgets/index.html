@@ -22,6 +22,12 @@
 </body>
 
 <script>
+function setImage(url) {
+  document.body.style.backgroundImage = `url(${url})`;
+  console.log('set img', url);
+}
+const img = new URLSearchParams(location.search).get('img') || 'room-reminder.png';
+setImage(img);
 
 </script>
 </html>
