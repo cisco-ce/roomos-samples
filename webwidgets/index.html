@@ -14,11 +14,26 @@
     }
     body {
       background-size: 100% 100%;
-      background-image: url('./room-reminder.png');
+      font-family: arial;
+    }
+    main {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
     }
   </style>
   </head>
 <body>
+  <main>
+    <h2>Web Widget Examples</h2>
+    <a href="?img=instructions.png">Instructions</a>
+    <a href="?img=news.png">News</a>
+    <a href="?img=report-issue.png">Report Issue</a>
+    <a href="?img=room-reminder.png">Room Reminder</a>
+    <a href="?img=stock.png">Stock ticker</a>
+  </main>
 </body>
 
 <script>
@@ -26,8 +41,10 @@ function setImage(url) {
   document.body.style.backgroundImage = `url(${url})`;
   console.log('set img', url);
 }
-const img = new URLSearchParams(location.search).get('img') || 'room-reminder.png';
-setImage(img);
-
+const img = new URLSearchParams(location.search).get('img');
+if (img) {
+  document.querySelector('main').style.display = 'none';
+  setImage(img);
+}
 </script>
 </html>
