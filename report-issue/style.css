@@ -67,8 +67,8 @@ section {
   display: none;
 }
 
-.disney .logo {
-  background-image: url('./assets/disney.png');
+.cisco .logo {
+  background-image: url('./assets/cisco.png');
   display: flex;
 }
 
@@ -315,36 +315,34 @@ a:hover, a:active {
 }
 
 
-
-
-body.disney2 {
-  background-image: url('./assets/disneycastle.jpeg');
+body.cisco2 {
+  background-image: url('assets/cisco2.jpg');
   background-size: cover;
   background-position: center center;
 }
 
-.disney2 section {
+.cisco2 section {
   top: 0;
   left: 0;
   width: 100%;
 }
 
-.disney2 button {
+.cisco2 button {
   background-image: none;
   background-color: #0009;
   color: white;
 }
 
-.disney2 h1 {
+.cisco2 h1 {
   color: white;
   text-shadow: 1px 1px black;
 }
 
-.disney2 footer {
+.cisco2 footer {
   color: white;
 }
 
-.disney2 textarea, .disney2 input {
+.cisco2 textarea, .cisco2 input {
   background-color: #0009;
   color: white;
 }

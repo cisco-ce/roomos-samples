@@ -1,6 +1,6 @@
 
 const dataModel = {
-  theme: 'disney',
+  theme: 'cisco',
   step: 'start',
   answers: {
     comments: '',
@@ -16,7 +16,7 @@ const dataModel = {
     const params = new URLSearchParams(location.search);
     const askRating = params.get('askrating');
     this.step = askRating ? 'start' : 'whatwaswrong';
-    this.theme = params.get('theme') || '';
+    this.theme = params.get('theme') || 'cisco';
     this.roomName = params.get('roomname');
     this.device = params.get('device');
     this.createQrCode();
