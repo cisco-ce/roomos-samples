@@ -22,6 +22,13 @@ There are already many examples of macros and UI extensions for reporting issues
 
 <img src="./screenshots/04-qrcode.png" height="300" />
 
+## Theming
+
+Since the dialog is a web view, it can be tweaked to look whatever way you choose, for example matching your company profile.
+
+In the macro, set `const theme='cisco2'` to get the following version instead:
+
+<img src="./screenshots/branded-version.png" height="300" />
 
 ## Requirements
 
