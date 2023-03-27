@@ -6,6 +6,7 @@ They can be viewed online at [the Github Pages site](https://cisco-ce.github.io/
 
 Current samples:
 
+* [Web widgets](./webwidgets) - A couple of examples of what web widgets could be used for
 * [User Media](./usermedia) - Test access to camera and microphone (self view and VU meter)
 * [Navigator Web App](./navigator/navigator-webapp/) - Let's you set the LED color of the Navigator
 * [Bank Kiosk](./kiosk-example) - Kiosk mode (Webex Bank example). Shows a simple branded kiosk that let's you place calls
