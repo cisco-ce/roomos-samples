@@ -9,6 +9,7 @@ async function init() {
 		content.textContent = "Navigator ID: " + unique_id;
 		setupSubscriptions();
 		getCurrent();
+		updateSerial();
 	} catch(e) {
 		content.textContent = e.message;
 		xapistatus.textContent = "error getting jsxapi object";
@@ -135,6 +136,13 @@ function getCurrent() {
     .catch(function(error) {
 		console.log(error);
     });
+}
+
+//Gets the Serial number of the device using the peripheralSerial replacement tag
+function updateSerial() {
+	const params = new URLSearchParams(window.location.search);
+	const serialNumber = params.get('serialnumber')	
+	document.getElementById('deviceSerial').innerHTML = "Device Serial: " + serialNumber;
 }
 
 //Gets the current xStatus of LedControl Color and displays on the page.
