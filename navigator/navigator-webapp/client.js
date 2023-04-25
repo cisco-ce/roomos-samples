@@ -94,7 +94,7 @@ const autoButton = document.getElementById('autoButton');
 autoButton.addEventListener('click', async function(e) {
    try {
 		xapi.Config.UserInterface.LedControl.Mode.set('Auto');
-		content.textContent = `Set Led Control to Auto`;
+		content.textContent = `Set Led Control to Auto - LED will be set to Off if Calendar is not setup`;
 
    	} catch(e) {
 		content.textContent = e.message;
@@ -118,24 +118,28 @@ failButton.addEventListener('click', async function(e) {
 function getCurrent() {
 	//Example xapi xStatus
 	xapi.Status.UserInterface.LedControl.Color.get().then((color) => {
-		switch(color) {
-			case 'Green':
-				 document.getElementById('ledRect').style.fill = color;
-				 break;
-			case 'Yellow':
-				 document.getElementById('ledRect').style.fill = color;
-				 break;
-			case 'Red':
-				 document.getElementById('ledRect').style.fill = color;
-				 break;
-			default: 
-				console.log("Unexpected color")
-				document.getElementById('ledRect').style.fill = 'orange';
-		}
+		setLedColor(color)
     })
     .catch(function(error) {
 		console.log(error);
     });
+}
+
+function setLedColor(color) {
+	console.log("COLOR: " + color)
+	switch(color) {
+		case 'Green':
+		case 'Yellow':
+		case 'Red':
+			 document.getElementById('ledRect').style.fill = color;
+			 break;
+		case 'Off':
+			document.getElementById('ledRect').style.fill = 'black';
+			break;
+		default: 
+			console.log("Unexpected color")
+			document.getElementById('ledRect').style.fill = 'grey';
+	}
 }
 
 //Gets the Serial number of the device using the peripheralSerial replacement tag
@@ -151,5 +155,7 @@ function updateSerial() {
 //Gets the current xStatus of LedControl Color and displays on the page.
 function setupSubscriptions() {
 	//Example xapi xStatus
-	xapi.Status.UserInterface.LedControl.Color.on(v =>document.getElementById('ledRect').style.fill = v);
+	xapi.Status.UserInterface.LedControl.Color.on(color => {
+		setLedColor(color)
+	});
 }
