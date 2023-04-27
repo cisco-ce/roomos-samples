@@ -4,6 +4,14 @@ function setup() {
   Alpine.store('model', {
     currentPage: 'home', // 'home', 'service'
     currentLanguage: 'english',
+    dialNumber: 'erica.talking@ivr.vc',
+
+    init() {
+      const params = new URLSearchParams(location.search);
+      if (params.has('number')) {
+        this.dialNumber = params.get('number');
+      }
+    },
     get page() {
       return this.currentPage;
     },
@@ -19,9 +27,9 @@ function setup() {
       this.currentLanguage = current;
     },
     services: [
-      { url: '20028162201@go.webex.com', name: 'Loan' },
-      { url: 'erica.talking@ivr.vc', name: 'Advice' },
-      { url: 'erica.talking@ivr.vc', name: 'Credit' },
+      { url: this.dialNumber, name: 'Loan' },
+      { url: this.dialNumber, name: 'Advice' },
+      { url: this.dialNumber, name: 'Credit' },
     ],
   });
 
