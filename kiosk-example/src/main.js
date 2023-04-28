@@ -5,12 +5,18 @@ function setup() {
     currentPage: 'home', // 'home', 'service'
     currentLanguage: 'english',
     dialNumber: 'erica.talking@ivr.vc',
+    services: [],
 
     init() {
       const params = new URLSearchParams(location.search);
       if (params.has('number')) {
         this.dialNumber = params.get('number');
       }
+      this.services = [
+        { url: this.dialNumber, name: 'Loan' },
+        { url: this.dialNumber, name: 'Advice' },
+        { url: this.dialNumber, name: 'Credit' },
+      ];
     },
     get page() {
       return this.currentPage;
@@ -26,11 +32,6 @@ function setup() {
     set language(current) {
       this.currentLanguage = current;
     },
-    services: [
-      { url: this.dialNumber, name: 'Loan' },
-      { url: this.dialNumber, name: 'Advice' },
-      { url: this.dialNumber, name: 'Credit' },
-    ],
   });
 
 }
