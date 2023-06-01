@@ -2,6 +2,8 @@
 
 A simple web widget for showing any QR code (URL) of choice.
 
+![Poster](./poster.jpeg)
+
 ## Usage
 
 You can define the QR code URL by sending it as a URL parameter to this web page, like so:
