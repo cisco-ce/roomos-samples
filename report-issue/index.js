@@ -67,7 +67,7 @@ const dataModel = {
     const instance = params.get('i');
 
     console.log({ bot, notify });
-    const url = `${instance}.service-now.com`;
+    const url = `${instance}.service-now.com/incident.do?sysparm_query=number=${id}`;
     let msg = `New ServiceNow incident created\n`;
     msg += `\n* Id: **${id}**`;
     msg += `\n* Category: **${category}**`;
