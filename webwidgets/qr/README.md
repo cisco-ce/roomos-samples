@@ -9,7 +9,7 @@ A simple web widget for showing any QR code (URL) of choice.
 You can define the QR code URL by sending it as a URL parameter to this web page, like so:
 
 ```
-https://cisco-ce.github.io/roomos-samples/webwidgets/?url=random.dog&title=Random%20Dog
+https://cisco-ce.github.io/roomos-samples/webwidgets/qr/?url=random.dog&title=Random%20Dog
 ```
 
 ## Customizations
