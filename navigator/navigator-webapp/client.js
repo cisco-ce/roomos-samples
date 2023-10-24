@@ -78,6 +78,39 @@ redButton.addEventListener('click', async function(e) {
    	}
 });
 
+//Xapi Command to set the LedControl Color to Blue
+const blueButton = document.getElementById('blueButton');
+blueButton.addEventListener('click', async function(e) {
+   try {
+	   //Example of an xapi xCommand
+		xapi.Command.UserInterface.LedControl.Color.Set({ Color: 'Blue' });
+   	} catch(e) {
+		content.textContent = e.message;
+   	}
+});
+
+//Xapi Command to set the LedControl Color to Purple
+const purpleButton = document.getElementById('purpleButton');
+purpleButton.addEventListener('click', async function(e) {
+   try {
+	   //Example of an xapi xCommand
+		xapi.Command.UserInterface.LedControl.Color.Set({ Color: 'Purple' });
+   	} catch(e) {
+		content.textContent = e.message;
+   	}
+});
+
+//Xapi Command to set the LedControl Color to Orange
+const orangeButton = document.getElementById('orangeButton');
+orangeButton.addEventListener('click', async function(e) {
+   try {
+	   //Example of an xapi xCommand
+		xapi.Command.UserInterface.LedControl.Color.Set({ Color: 'Orange' });
+   	} catch(e) {
+		content.textContent = e.message;
+   	}
+});
+
 const manualButton = document.getElementById('manualButton');
 manualButton.addEventListener('click', async function(e) {
    try {
@@ -131,6 +164,9 @@ function setLedColor(color) {
 		case 'Green':
 		case 'Yellow':
 		case 'Red':
+		case 'Blue':
+		case 'Purple':
+		case 'Orange':
 			 document.getElementById('ledRect').style.fill = color;
 			 break;
 		case 'Off':

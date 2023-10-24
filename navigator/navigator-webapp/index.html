@@ -11,9 +11,9 @@
 		width: 100vw;
 	}
 	 button {
-		padding: 35px 50px;
+		padding: 20px 35px;
 		margin: 20px;
-		font-size: 30px;
+		font-size: 20px;
 		text-align: center;
 		cursor: pointer;
 		outline: none;
@@ -27,14 +27,23 @@
 		transform: translateY(4px);
 	}
 	.container { 
-		height: 400px;
+		height: 325px;
 		position: relative;
 
 	}
 	.center {
 		margin: 0;
-		width: 60%;
+		width: 100%;
 		position: absolute;
+		top: 85%;
+		left: 75%;
+		-ms-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+	}
+	.row {
+		margin: 0;
+		width: 100%;
+		position: relative;
 		top: 50%;
 		left: 50%;
 		-ms-transform: translate(-50%, -50%);
@@ -50,17 +59,27 @@
 	<div id ="content">Waiting on initialization...</div>
 	<div id ="xapistatus">Waiting on initialization...</div>
 	<div id ="deviceSerial">Device Serial: ...</div>
-    <h1 style="text-align:center;margin-top: 25px;">Testing with Webview XAPI</h1>
+    <h1 style="text-align:center;margin-bottom: 0px;margin-top: -25px;">Persistent Web App JSXAPI Test App</h1>
 	<br>
 	<div class="container">
 		<div class="center">
-			<h2 style="text-align:center;">Set LED color using jsxapi:</h2>
-			<button id="greenButton" style="background-color:green;">Green</button>   
-			<button id="yellowButton" style="background-color:yellow;">Yellow</button> 
-			<button id="redButton" style="background-color:red;">Red</button>
-			<button id="manualButton" style="background-color:orange;">Manual</button>
-			<button id="autoButton" style="background-color:orange;">Auto</button>
-			<button id="failCase" style="background-color:orange;">Fail Case</button>
+			<div class="row">
+				<h2 style="text-align:left;">Set LedControl Mode:</h2>
+				<button id="manualButton" style="background-color:grey;">Manual</button>
+				<button id="autoButton" style="background-color:grey;">Auto</button>
+				<button id="failCase" style="background-color:grey;">Fail Case</button>
+			</div>
+			<div class="row">
+				<h2 style="text-align:left;">Select LED Color:</h2>
+				<button id="greenButton" style="background-color:green;">Green</button>
+				<button id="yellowButton" style="background-color:yellow;">Yellow</button>
+				<button id="redButton" style="background-color:red;">Red</button>
+			</div>
+			<div class="row">
+				<button id="blueButton" style="background-color:blue;">Blue</button>
+				<button id="purpleButton" style="background-color:purple;">Purple</button>
+				<button id="orangeButton" style="background-color:orange;">Orange</button>
+			</div>
 		</div>
 	</div>
 	
